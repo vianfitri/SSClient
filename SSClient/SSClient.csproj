@@ -100,24 +100,6 @@
     <Compile Include="Forms\fAccount.Designer.cs">
       <DependentUpon>fAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fAddCargo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fAddCargo.Designer.cs">
-      <DependentUpon>fAddCargo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fAddInstructor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fAddInstructor.Designer.cs">
-      <DependentUpon>fAddInstructor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fAddTrainee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fAddTrainee.Designer.cs">
-      <DependentUpon>fAddTrainee.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\fBCStowPlan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,12 +111,6 @@
     </Compile>
     <Compile Include="Forms\fCargoData.Designer.cs">
       <DependentUpon>fCargoData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fClientList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fClientList.Designer.cs">
-      <DependentUpon>fClientList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\fDbConfig.cs">
       <SubType>Form</SubType>
@@ -153,12 +129,6 @@
     </Compile>
     <Compile Include="Forms\fGCStowPlan.Designer.cs">
       <DependentUpon>fGCStowPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fInstructorData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fInstructorData.Designer.cs">
-      <DependentUpon>fInstructorData.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\fLoadPos.cs">
       <SubType>Form</SubType>
@@ -190,18 +160,6 @@
     <Compile Include="Forms\formWelcome.Designer.cs">
       <DependentUpon>formWelcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fReport.Designer.cs">
-      <DependentUpon>fReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\fScenario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fScenario.Designer.cs">
-      <DependentUpon>fScenario.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\fSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,12 +178,6 @@
     <Compile Include="Forms\fSSS.Designer.cs">
       <DependentUpon>fSSS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\fTraineeData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\fTraineeData.Designer.cs">
-      <DependentUpon>fTraineeData.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\View3D.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,23 +195,11 @@
     <EmbeddedResource Include="Forms\fAccount.resx">
       <DependentUpon>fAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fAddCargo.resx">
-      <DependentUpon>fAddCargo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fAddInstructor.resx">
-      <DependentUpon>fAddInstructor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fAddTrainee.resx">
-      <DependentUpon>fAddTrainee.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\fBCStowPlan.resx">
       <DependentUpon>fBCStowPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\fCargoData.resx">
       <DependentUpon>fCargoData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fClientList.resx">
-      <DependentUpon>fClientList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\fDbConfig.resx">
       <DependentUpon>fDbConfig.cs</DependentUpon>
@@ -269,9 +209,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\fGCStowPlan.resx">
       <DependentUpon>fGCStowPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fInstructorData.resx">
-      <DependentUpon>fInstructorData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\fLoadPos.resx">
       <DependentUpon>fLoadPos.cs</DependentUpon>
@@ -288,12 +225,6 @@
     <EmbeddedResource Include="Forms\formWelcome.resx">
       <DependentUpon>formWelcome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fReport.resx">
-      <DependentUpon>fReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fScenario.resx">
-      <DependentUpon>fScenario.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\fSetting.resx">
       <DependentUpon>fSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,9 +233,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\fSSS.resx">
       <DependentUpon>fSSS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\fTraineeData.resx">
-      <DependentUpon>fTraineeData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\View3D.resx">
       <DependentUpon>View3D.cs</DependentUpon>
