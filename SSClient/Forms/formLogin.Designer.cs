@@ -48,7 +48,6 @@ namespace SSClient
             // 
             // pnlBackground
             // 
-            this.pnlBackground.BackgroundImage = global::SSClient.Properties.Resources.Maritime_Safety;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlBackground.Controls.Add(this.btnConfig);
             this.pnlBackground.Controls.Add(this.label2);
