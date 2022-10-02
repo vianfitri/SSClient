@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C909F515-5041-46A4-A034-B08226B3E062}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SSInstructor</RootNamespace>
+    <AssemblyName>SSInstructor</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\library\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.4.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VisualReactiveWinForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0ee513efc52b401d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Visual.Reactive.WinForms.1.0.0\lib\VisualReactiveWinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ControlExtensions.cs" />
+    <Compile Include="Class\DB.cs" />
+    <Compile Include="Class\IniFiles.cs" />
+    <Compile Include="Class\Machines.cs" />
+    <Compile Include="Class\ModalPopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\Networking.cs" />
+    <Compile Include="Class\ReadWriteFile.cs" />
+    <Compile Include="Class\ShutdownServer.cs" />
+    <Compile Include="Class\StabilityCalculator.cs" />
+    <Compile Include="Controls\ClientPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ClientPanel.Designer.cs">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ClientProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClientProperties.Designer.cs">
+      <DependentUpon>ClientProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fAccount.Designer.cs">
+      <DependentUpon>fAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fAddCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fAddCargo.Designer.cs">
+      <DependentUpon>fAddCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fAddInstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fAddInstructor.Designer.cs">
+      <DependentUpon>fAddInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fAddTrainee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fAddTrainee.Designer.cs">
+      <DependentUpon>fAddTrainee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fBCStowPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fBCStowPlan.Designer.cs">
+      <DependentUpon>fBCStowPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fCargoData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fCargoData.Designer.cs">
+      <DependentUpon>fCargoData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fClientList.Designer.cs">
+      <DependentUpon>fClientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fDbConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fDbConfig.Designer.cs">
+      <DependentUpon>fDbConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fFCStowPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fFCStowPlan.Designer.cs">
+      <DependentUpon>fFCStowPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fGCStowPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fGCStowPlan.Designer.cs">
+      <DependentUpon>fGCStowPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fInstructorData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fInstructorData.Designer.cs">
+      <DependentUpon>fInstructorData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fLoadPos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fLoadPos.Designer.cs">
+      <DependentUpon>fLoadPos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formDashboard.Designer.cs">
+      <DependentUpon>formDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formMain.Designer.cs">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formWelcome.Designer.cs">
+      <DependentUpon>formWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fReport.Designer.cs">
+      <DependentUpon>fReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fScenario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fScenario.Designer.cs">
+      <DependentUpon>fScenario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fSetting.Designer.cs">
+      <DependentUpon>fSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fShipData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fShipData.Designer.cs">
+      <DependentUpon>fShipData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fSSS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fSSS.Designer.cs">
+      <DependentUpon>fSSS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fTraineeData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fTraineeData.Designer.cs">
+      <DependentUpon>fTraineeData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View3D.Designer.cs">
+      <DependentUpon>View3D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\ClientPanel.resx">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientProperties.resx">
+      <DependentUpon>ClientProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fAccount.resx">
+      <DependentUpon>fAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fAddCargo.resx">
+      <DependentUpon>fAddCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fAddInstructor.resx">
+      <DependentUpon>fAddInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fAddTrainee.resx">
+      <DependentUpon>fAddTrainee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fBCStowPlan.resx">
+      <DependentUpon>fBCStowPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fCargoData.resx">
+      <DependentUpon>fCargoData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fClientList.resx">
+      <DependentUpon>fClientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fDbConfig.resx">
+      <DependentUpon>fDbConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fFCStowPlan.resx">
+      <DependentUpon>fFCStowPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fGCStowPlan.resx">
+      <DependentUpon>fGCStowPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fInstructorData.resx">
+      <DependentUpon>fInstructorData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fLoadPos.resx">
+      <DependentUpon>fLoadPos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formDashboard.resx">
+      <DependentUpon>formDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formMain.resx">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formWelcome.resx">
+      <DependentUpon>formWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fReport.resx">
+      <DependentUpon>fReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fScenario.resx">
+      <DependentUpon>fScenario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fSetting.resx">
+      <DependentUpon>fSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fShipData.resx">
+      <DependentUpon>fShipData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fSSS.resx">
+      <DependentUpon>fSSS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fTraineeData.resx">
+      <DependentUpon>fTraineeData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\View3D.resx">
+      <DependentUpon>View3D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maritime Safety.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Machines\Machines.csproj">
+      <Project>{6d7c3789-bca5-427c-97bb-0c733e1bcbce}</Project>
+      <Name>Machines</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViControls\ViControls.csproj">
+      <Project>{C8C1975E-C078-4FAD-A978-6F6547CE8BF1}</Project>
+      <Name>ViControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speed-1280x720.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer-on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer-idle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stock_Index_Up_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stock_Index_Down_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deletered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PIP-LOGO-03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PIP_SEMARANG_LOGO.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
