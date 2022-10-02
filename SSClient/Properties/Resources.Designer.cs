@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SSClient.Properties {
+namespace SSInstructor.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SSClient.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SSClient.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SSInstructor.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -136,6 +136,16 @@ namespace SSClient.Properties {
         internal static System.Drawing.Bitmap Maritime_Safety {
             get {
                 object obj = ResourceManager.GetObject("Maritime Safety", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Maritime_Safety1 {
+            get {
+                object obj = ResourceManager.GetObject("Maritime Safety1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

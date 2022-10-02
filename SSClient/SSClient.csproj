@@ -394,5 +394,8 @@
   <ItemGroup>
     <None Include="Resources\PIP_SEMARANG_LOGO.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maritime Safety1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
