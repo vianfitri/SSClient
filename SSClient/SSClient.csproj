@@ -82,12 +82,6 @@
     <Compile Include="Class\ReadWriteFile.cs" />
     <Compile Include="Class\ShutdownServer.cs" />
     <Compile Include="Class\StabilityCalculator.cs" />
-    <Compile Include="Controls\ClientPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ClientPanel.Designer.cs">
-      <DependentUpon>ClientPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ClientProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,9 +174,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\ClientPanel.resx">
-      <DependentUpon>ClientPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClientProperties.resx">
       <DependentUpon>ClientProperties.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +306,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Maritime Safety1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PIP_SEMARANG_LOGO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
