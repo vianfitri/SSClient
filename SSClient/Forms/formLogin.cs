@@ -108,9 +108,11 @@ namespace SSClient
             int num = 0;
 
             string queryString = "SELECT * FROM shp_assets.ss_user a " +
-                "WHERE a.u_name = '" + txtUsername.Texts +
-                "' AND a.u_pass = MD5('" + txtPassword.Texts +
-                "') LIMIT 0, 1";
+                "INNER JOIN shp_assets.ss_subject b " +
+                "ON a.id_subject = b.idsubject " +
+                "WHERE a.u_name = '" + txtUsername.Texts + "' " + 
+                "AND a.u_pass = MD5('" + txtPassword.Texts + "') " +
+                "AND b.type = 3 LIMIT 0, 1";
 
             if(mysqlDBConn.GetTotalRow(queryString, ref num))
             {
