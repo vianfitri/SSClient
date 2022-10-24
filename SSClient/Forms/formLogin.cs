@@ -107,7 +107,7 @@ namespace SSClient
             // Get Login Pass
             int num = 0;
 
-            string queryString = "SELECT * FROM shp_stability.ss_user a " +
+            string queryString = "SELECT * FROM shp_assets.ss_user a " +
                 "WHERE a.u_name = '" + txtUsername.Texts +
                 "' AND a.u_pass = MD5('" + txtPassword.Texts +
                 "') LIMIT 0, 1";
