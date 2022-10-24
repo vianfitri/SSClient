@@ -34,7 +34,6 @@ namespace SSClient
         #region "Methods"
         private void customizeDesign()
         {
-
         }
 
         private void hideSubmenu()
