@@ -154,7 +154,6 @@ namespace SSClient
 
             // Goto Main Form if success
             this._parent.openChildForm(this._parent.fDash);
-
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
