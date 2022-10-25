@@ -2380,16 +2380,23 @@ namespace SSClient.Forms
         private void SavePractValue()
         {
             // Save Value of Practic
-            string qValPrac = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
+            string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
                 "`id_practicum`, `id_student`, `tmmb_weight`, `tmmb_position`,`tmmd_wight`, `tmmd_position`," +
                 "`tkk_weight`,`tkk_position`,`tnt_weight`,`tnt_position`) VALUES ("+ id_practicum + ", " +
                 "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
                 tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
 
+            string qValPrac = qValExec;
+
             if(MySQLConn.SetCommand(qValPrac))
             {
-
+                btnEndAssessment.Visible = false;
             }
+        }
+
+        private void btnEndAssessment_Click(object sender, EventArgs e)
+        {
+            SavePractValue();
         }
         #endregion
 
@@ -2397,5 +2404,7 @@ namespace SSClient.Forms
         {
 
         }
+
+        
     }
 }
