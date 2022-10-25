@@ -177,7 +177,13 @@ namespace SSClient
                             else
                             {
                                 // duplicate database
+                                string fromDB = dActScen.Rows[0]["db_name"].ToString();
+                                string toDB = dActScen.Rows[0]["db_name"].ToString() + "_" + this._parent.LoginId;
 
+                                if(mysqlDbConn.DuplicateDB(fromDB, toDB))
+                                {
+
+                                }
                             }
                         }
 
