@@ -199,7 +199,6 @@ namespace SSClient
                                 }
                             }
                         }
-
                     }
                 } 
                 else

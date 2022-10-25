@@ -16,6 +16,9 @@ namespace SSClient.Forms
     {
         #region "Fields"
 
+        formDashboard _parent;
+        private DB mysqlConn = null;
+
         #region "Load"
         double dWeightTotalShip;
         double dWeightTotalShip_Real;
@@ -194,13 +197,19 @@ namespace SSClient.Forms
         #endregion
 
         #region "Constructor"
-        public fSSS()
+        public fSSS(formDashboard parent)
         {
             InitializeComponent();
+            this._parent = parent;
         }
         #endregion
 
         #region "Properties"
+        public DB MySQLConn
+        {
+            get { return mysqlConn; }
+            set { mysqlConn = value; }
+        }
         #endregion
 
         #region "Method"
