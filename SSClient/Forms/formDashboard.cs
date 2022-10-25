@@ -123,6 +123,9 @@ namespace SSClient
             // fetch login user information
             int currentLogId = this._parent.LoginId;
 
+            // Load Scenario and Duplicate DB Scen
+            ScenLoad();
+
             loadLoginInfo(currentLogId);
 
             hideSubmenu();
@@ -142,6 +145,49 @@ namespace SSClient
             //openChildForm(new fSSS());
 
             //hideSubmenu();
+        }
+
+        private void ScenLoad()
+        {
+            // Get Active Scenario
+            int activeScenNum = 0;
+
+            string qActScen = "SELECT * FROM `shp_assets`.`ss_scenario` WHERE is_active = 1";
+
+            if (mysqlDbConn.GetTotalRow(qActScen, ref activeScenNum))
+            {
+                if (activeScenNum > 0)
+                {
+                    // get data from active scenario
+                    DataTable dActScen = new DataTable();
+                    if (mysqlDbConn.GetTableData(qActScen, ref dActScen))
+                    {
+                        int ScenPractNum = 0;
+                        // get data scenario practicum for student. if null created
+                        string qScenPra = "SELECT * FROM `shp_assets`.`ss_scenario_practicum` " +
+                            "WHERE id_scenario = " + dActScen.Rows[0]["id"] + " " +
+                            "AND id_student = " + this._parent.LoginId;
+
+                        if (mysqlDbConn.GetTotalRow(qScenPra, ref ScenPractNum))
+                        {
+                            if (ScenPractNum > 0)
+                            {
+                                // get database name for practicum
+                            }
+                            else
+                            {
+                                // duplicate database
+
+                            }
+                        }
+
+                    }
+                } 
+                else
+                {
+                    Console.WriteLine("No Acive Scenario");
+                }
+            }
         }
         #endregion
     }
