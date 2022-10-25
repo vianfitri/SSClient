@@ -176,7 +176,7 @@ namespace SSClient
                                 DataTable dScenPra = new DataTable();
                                 if(mysqlDbConn.GetTableData(qScenPra, ref dScenPra))
                                 {
-
+                                    ParamsGlobal.test_db_name = dScenPra.Rows[0]["db_name"].ToString();
                                 }
                             }
                             else
@@ -194,9 +194,8 @@ namespace SSClient
 
                                     if (mysqlDbConn.SetCommand(qInScenPra))
                                     {
-
+                                        ParamsGlobal.test_db_name = toDB;
                                     }
-
                                 }
                             }
                         }
@@ -205,7 +204,7 @@ namespace SSClient
                 } 
                 else
                 {
-                    Console.WriteLine("No Acive Scenario");
+                    Console.WriteLine("No Active Scenario");
                 }
             }
         }

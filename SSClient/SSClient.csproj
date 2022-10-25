@@ -79,6 +79,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Class\Networking.cs" />
+    <Compile Include="Class\ParamsGlobal.cs" />
     <Compile Include="Class\ReadWriteFile.cs" />
     <Compile Include="Class\ShutdownServer.cs" />
     <Compile Include="Class\StabilityCalculator.cs" />
