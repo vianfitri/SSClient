@@ -2386,6 +2386,7 @@ namespace SSClient.Forms
                 "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
                 tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
 
+            //string qValScore = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_scoring`"
             string qValPrac = qValExec;
 
             if(MySQLConn.SetCommand(qValPrac))
