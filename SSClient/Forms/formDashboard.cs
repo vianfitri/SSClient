@@ -189,7 +189,14 @@ namespace SSClient
                                 {
                                     // insert data to Scenario Practicum table
                                     string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum`(" +
-                                        "`id_scenario`,`db_name`,`id_student`,`student_name`"
+                                        "`id_scenario`,`db_name`,`id_student`) VALUES (" + dActScen.Rows[0]["id"] + "," +
+                                        "'" + toDB + "', " + this._parent.LoginId + ")";
+
+                                    if (mysqlDbConn.SetCommand(qInScenPra))
+                                    {
+
+                                    }
+
                                 }
                             }
                         }
