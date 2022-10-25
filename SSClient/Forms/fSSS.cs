@@ -2385,6 +2385,11 @@ namespace SSClient.Forms
                 "`tkk_weight`,`tkk_position`,`tnt_weight`,`tnt_position`) VALUES ("+ id_practicum + ", " +
                 "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
                 tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
+
+            if(MySQLConn.SetCommand(qValPrac))
+            {
+
+            }
         }
         #endregion
 
