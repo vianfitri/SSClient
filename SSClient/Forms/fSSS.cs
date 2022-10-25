@@ -215,6 +215,9 @@ namespace SSClient.Forms
         #region "Method"
         private void fSSS_Load(object sender, EventArgs e)
         {
+            // Set MySQL Connector
+            MySQLConn = this._parent.MySQLConn;
+
             StabilityCalculator.LoadConfiguration(Application.StartupPath + "\\Data\\BC.cfg");
 
             // SplitContainer Setting
@@ -858,6 +861,15 @@ namespace SSClient.Forms
             }
             cbbHSLineSelect.SelectedIndex = 0;
             cbxUseDispOrDraftReal.Checked = true;
+
+            // initialize test data
+            string qInitPrac = "SELECT * FROM `" + ParamsGlobal.test_db_name + "`.`ss_practicum`";
+
+            DataTable dtInitPrac = new DataTable();
+            if(MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
+            {
+
+            }
         }
 
         private void crtLoadSideView_PrePaint(object sender, ChartPaintEventArgs e)

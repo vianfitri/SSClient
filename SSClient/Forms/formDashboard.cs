@@ -31,6 +31,14 @@ namespace SSClient
         }
         #endregion
 
+        #region "Properties"
+        public DB MySQLConn
+        {
+            get { return mysqlDbConn; }
+            set { mysqlDbConn = value; }
+        }
+        #endregion
+
         #region "Methods"
         private void customizeDesign()
         {
@@ -134,7 +142,7 @@ namespace SSClient
         private void btnStability_Click(object sender, EventArgs e)
         {
             // Load Instructor Data
-            openChildForm(new fSSS());
+            openChildForm(new fSSS(this));
 
             hideSubmenu();
         }
@@ -177,6 +185,7 @@ namespace SSClient
                                 if(mysqlDbConn.GetTableData(qScenPra, ref dScenPra))
                                 {
                                     ParamsGlobal.test_db_name = dScenPra.Rows[0]["db_name"].ToString();
+                                    btnStability_Click(null,null);
                                 }
                             }
                             else
@@ -195,6 +204,7 @@ namespace SSClient
                                     if (mysqlDbConn.SetCommand(qInScenPra))
                                     {
                                         ParamsGlobal.test_db_name = toDB;
+                                        btnStability_Click(null, null);
                                     }
                                 }
                             }
