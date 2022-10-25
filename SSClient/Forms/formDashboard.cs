@@ -172,7 +172,12 @@ namespace SSClient
                         {
                             if (ScenPractNum > 0)
                             {
-                                // get database name for practicum
+                                // get database name for student practicum
+                                DataTable dScenPra = new DataTable();
+                                if(mysqlDbConn.GetTableData(qScenPra, ref dScenPra))
+                                {
+
+                                }
                             }
                             else
                             {
@@ -182,7 +187,9 @@ namespace SSClient
 
                                 if(mysqlDbConn.DuplicateDB(fromDB, toDB))
                                 {
-
+                                    // insert data to Scenario Practicum table
+                                    string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum`(" +
+                                        "`id_scenario`,`db_name`,`id_student`,`student_name`"
                                 }
                             }
                         }
