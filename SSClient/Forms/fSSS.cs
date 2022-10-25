@@ -19,6 +19,17 @@ namespace SSClient.Forms
         formDashboard _parent;
         private DB mysqlConn = null;
 
+        #region "Pract Variables To Save"
+        float tmmb_weight = 0f;
+        float tmmb_pos = 0f;
+        float tmmd_weight = 0f;
+        float tmmd_pos = 0f;
+        float tkk_weight = 0f;
+        float tkk_pos = 0f;
+        float tnt_weight = 0f;
+        float tnt_pos = 0f;
+        #endregion
+
         #region "Load"
         double dWeightTotalShip;
         double dWeightTotalShip_Real;
@@ -862,14 +873,7 @@ namespace SSClient.Forms
             cbbHSLineSelect.SelectedIndex = 0;
             cbxUseDispOrDraftReal.Checked = true;
 
-            // initialize test data
-            string qInitPrac = "SELECT * FROM `" + ParamsGlobal.test_db_name + "`.`ss_practicum`";
-
-            DataTable dtInitPrac = new DataTable();
-            if(MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
-            {
-
-            }
+            InitPractData();
         }
 
         private void crtLoadSideView_PrePaint(object sender, ChartPaintEventArgs e)
@@ -2305,7 +2309,38 @@ namespace SSClient.Forms
             txbX0Value_Real.Text = (StabilityCalculator.LCG_BC * StabilityCalculator.ship_scale / 1000).ToString("F1");
         }
 
+        private void InitPractData()
+        {
+            // initialize test data
+            string qInitPrac = "SELECT * FROM `" + ParamsGlobal.test_db_name + "`.`ss_practicum`";
 
+            DataTable dtInitPrac = new DataTable();
+            if (MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
+            {
+                nudBebanTMMB.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmb_weight"].ToString());
+                nudBebanTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_wight"].ToString());
+                nudBebanTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_weight"].ToString());
+                nudBebanTNT.Value = decimal.Parse(dtInitPrac.Rows[0]["tnt_weight"].ToString());
+
+                nudPosisiTMMB.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmb_position"].ToString());
+                nudPosisiTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_position"].ToString());
+                nudPosisiTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_position"].ToString());
+                nudPosisiTNT.Value = decimal.Parse(dtInitPrac.Rows[0]["tnt_position"].ToString());
+            }
+        }
+
+        private void SetPracValue()
+        {
+            tmmb_weight = (float)mTMMB;
+            tmmd_weight = (float)mTMMD;
+            tkk_weight = (float)mTKK;
+            tnt_weight = (float)mTNT;
+
+            tmmb_pos = (float)nudPosisiTMMB.Value;
+            tmmd_pos = (float)nudPosisiTMMD.Value;
+            tkk_pos = (float)nudPosisiTKK.Value;
+            tnt_pos = (float)nudPosisiTNT.Value;
+        }
         #endregion
 
         private void btnReloadCFG_Click(object sender, EventArgs e)
