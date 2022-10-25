@@ -20,6 +20,9 @@ namespace SSClient.Forms
         private DB mysqlConn = null;
 
         #region "Pract Variables To Save"
+        int id_practicum = 0;
+        float heel_val = 0;
+        float trim_val = 0;
         float tmmb_weight = 0f;
         float tmmb_pos = 0f;
         float tmmd_weight = 0f;
@@ -1020,24 +1023,32 @@ namespace SSClient.Forms
         {
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudBebanTMMD_ValueChanged(object sender, EventArgs e)
         {
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudBebanTKK_ValueChanged(object sender, EventArgs e)
         {
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudBebanTNT_ValueChanged(object sender, EventArgs e)
         {
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void scbPosisiTMMB_Scroll(object sender, ScrollEventArgs e)
@@ -1045,6 +1056,8 @@ namespace SSClient.Forms
             nudPosisiTMMB.Value = scbPosisiTMMB.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void scbPosisiTMMD_Scroll(object sender, ScrollEventArgs e)
@@ -1052,6 +1065,8 @@ namespace SSClient.Forms
             nudPosisiTMMD.Value = scbPosisiTMMD.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void scbPosisiTKK_Scroll(object sender, ScrollEventArgs e)
@@ -1059,6 +1074,8 @@ namespace SSClient.Forms
             nudPosisiTKK.Value = scbPosisiTKK.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void scbPosisiTNT_Scroll(object sender, ScrollEventArgs e)
@@ -1066,6 +1083,8 @@ namespace SSClient.Forms
             nudPosisiTNT.Value = scbPosisiTNT.Minimum + scbPosisiTNT.Maximum - scbPosisiTNT.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudPosisiTMMB_ValueChanged(object sender, EventArgs e)
@@ -1073,6 +1092,8 @@ namespace SSClient.Forms
             scbPosisiTMMB.Value = (int)nudPosisiTMMB.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudPosisiTMMD_ValueChanged(object sender, EventArgs e)
@@ -1080,6 +1101,8 @@ namespace SSClient.Forms
             scbPosisiTMMD.Value = (int)nudPosisiTMMD.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudPosisiTKK_ValueChanged(object sender, EventArgs e)
@@ -1087,6 +1110,8 @@ namespace SSClient.Forms
             scbPosisiTKK.Value = (int)nudPosisiTKK.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudPosisiTNT_ValueChanged(object sender, EventArgs e)
@@ -1094,6 +1119,8 @@ namespace SSClient.Forms
             scbPosisiTNT.Value = scbPosisiTNT.Minimum + scbPosisiTNT.Maximum - (int)nudPosisiTNT.Value;
             CalculateCG_and_Attitude();
             DrawGZandKNCurves();
+
+            SetPracValue();
         }
 
         private void nudHSLineWidth_ValueChanged(object sender, EventArgs e)
@@ -2317,6 +2344,7 @@ namespace SSClient.Forms
             DataTable dtInitPrac = new DataTable();
             if (MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
             {
+                id_practicum = int.Parse(dtInitPrac.Rows[0]["id"].ToString());
                 nudBebanTMMB.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmb_weight"].ToString());
                 nudBebanTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_wight"].ToString());
                 nudBebanTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_weight"].ToString());
@@ -2327,6 +2355,10 @@ namespace SSClient.Forms
                 nudPosisiTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_position"].ToString());
                 nudPosisiTNT.Value = decimal.Parse(dtInitPrac.Rows[0]["tnt_position"].ToString());
             }
+
+            cbxUseHeelReal.Checked = true;
+            cbxUseTrimReal.Checked = true;
+
         }
 
         private void SetPracValue()
@@ -2340,6 +2372,20 @@ namespace SSClient.Forms
             tmmd_pos = (float)nudPosisiTMMD.Value;
             tkk_pos = (float)nudPosisiTKK.Value;
             tnt_pos = (float)nudPosisiTNT.Value;
+
+            heel_val = (float)heel_angle;
+            trim_val = (float)trim_angle;
+        }
+
+        private void SavePractValue()
+        {
+            // Save Value of Practic
+            string qValPrac = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
+                "`id_practicum`, `id_student`, `tmmb_weight`, `tmmb_position`,`tmmd_wight`, `tmmd_position`," +
+                "`tkk_weight`,`tkk_position`,`tnt_weight`,`tnt_position`) VALUES ("+ id_practicum + ", " +
+                "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
+                tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
+
         }
         #endregion
 
