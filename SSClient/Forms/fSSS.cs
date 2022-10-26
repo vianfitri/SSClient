@@ -31,6 +31,20 @@ namespace SSClient.Forms
         float tkk_pos = 0f;
         float tnt_weight = 0f;
         float tnt_pos = 0f;
+
+        // Score criteria
+        float angle_max = 0;
+        float draft_aft_max = 0;
+        float draft_fwd_max = 0;
+        float time_duration_max = 0;
+        
+        // Score to save
+        float angle_heel_score = 0;
+        float angle_trim_score = 0;
+        float aft_draft_score = 0;
+        float fwd_draft_score = 0;
+        float time_speed_score = 0;
+        float accomplished_score = 0;
         #endregion
 
         #region "Load"
@@ -2379,6 +2393,8 @@ namespace SSClient.Forms
 
         private void SavePractValue()
         {
+            // generate random pract id
+
             // Save Value of Practic
             string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
                 "`id_practicum`, `id_student`, `tmmb_weight`, `tmmb_position`,`tmmd_wight`, `tmmd_position`," +
@@ -2386,8 +2402,11 @@ namespace SSClient.Forms
                 "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
                 tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
 
-            //string qValScore = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_scoring`"
-            string qValPrac = qValExec;
+            string qValScore = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_scoring`(" +
+                "`id_student`,`angle_heel`,`angle_trim`,`is_accomplished`) VALUES (0," + heel_val + "," +
+                trim_val + ",1);";
+
+            string qValPrac = qValExec + qValScore;
 
             if(MySQLConn.SetCommand(qValPrac))
             {
@@ -2398,6 +2417,11 @@ namespace SSClient.Forms
         private void btnEndAssessment_Click(object sender, EventArgs e)
         {
             SavePractValue();
+        }
+
+        private void CalculateScore()
+        {
+
         }
         #endregion
 

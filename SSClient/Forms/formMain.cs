@@ -24,7 +24,6 @@ namespace SSClient.Forms
         private DB mysqlDbConn;
         public formLogin fLogin = null;
         public formDashboard fDash = null;
-        private static Semaphore Pool = new Semaphore(0, 10);
 
         #endregion
 
@@ -80,14 +79,7 @@ namespace SSClient.Forms
             // Get Screen Working Resolution
             int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
-            Console.WriteLine(string.Format("Screen Working Area : {0}x{1}",screenWidth,screenHeight));
-
-            // Load PC Client List
-            MachineModule.Machines.Load(Pool);
-            MachineModule.Machines.Dirty = false;
-
-            // Initiate ShutdownServer
-            ShutdownServer.Initiate();
+            Console.WriteLine(string.Format("Screen Working Area : {0}x{1}",screenWidth,screenHeight))
 
             if (loginId == -1)
             {
@@ -97,15 +89,12 @@ namespace SSClient.Forms
 
         private void formMain_Shown(object sender, EventArgs e)
         {
-            // Release PC Client Pool
-            Pool.Release(10);
+
         }
 
         private void formMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Save and Close PC Client
-            MachineModule.Machines.Save();
-            MachineModule.Machines.Close();
+
         }
         #endregion
 
