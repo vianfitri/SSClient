@@ -31,6 +31,9 @@ namespace SSClient.Forms
         float tkk_pos = 0f;
         float tnt_weight = 0f;
         float tnt_pos = 0f;
+        float aft_draft = 0f;
+        float fwd_draft = 0f;
+        float time_elapsed = 0f;
 
         // Score criteria
         float angle_max = 0;
@@ -2391,9 +2394,11 @@ namespace SSClient.Forms
             trim_val = (float)trim_angle;
         }
 
-        private void SavePractValue()
+        private void SavePractValue(int accomplished = 0)
         {
             // generate random pract id
+
+            // Calculate Score
 
             // Save Value of Practic
             string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
@@ -2403,8 +2408,16 @@ namespace SSClient.Forms
                 tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
 
             string qValScore = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_scoring`(" +
-                "`id_student`,`angle_heel`,`angle_trim`,`is_accomplished`) VALUES (0," + heel_val + "," +
-                trim_val + ",1);";
+                "`id_execute`,`id_student`,"+
+                "`angle_heel`,`angle_heel_score`,`angle_trim`,`angle_trim_score`,"+
+                "`draft_aft`,`draft_aft_score`,`draft_fwd`,`draft_fwd_score`," +
+                "`time_elapse`,`time_elapsed_score`," +
+                "`is_accomplished`,`accomplished_score`) VALUES (" +
+                "1, 0," + 
+                heel_val + "," + angle_heel_score + "," + trim_val + "," + angle_trim_score + "," +
+                aft_draft + "," + aft_draft_score + "," + fwd_draft + "," + fwd_draft_score + "," +
+                time_elapsed + "," + time_speed_score + "," +
+                accomplished + "," + accomplished_score + ");";
 
             string qValPrac = qValExec + qValScore;
 
@@ -2416,7 +2429,7 @@ namespace SSClient.Forms
 
         private void btnEndAssessment_Click(object sender, EventArgs e)
         {
-            SavePractValue();
+            SavePractValue(1);
         }
 
         private void CalculateScore()
