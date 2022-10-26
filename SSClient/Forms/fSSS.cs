@@ -2399,6 +2399,7 @@ namespace SSClient.Forms
             // generate random pract id
 
             // Calculate Score
+            CalculateScore(accomplished);
 
             // Save Value of Practic
             string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
@@ -2432,15 +2433,24 @@ namespace SSClient.Forms
             SavePractValue(1);
         }
 
-        private void CalculateScore()
+        private void CalculateScore(int accomplished = 0)
         {
             // calculate angle score
             if (Math.Abs(heel_val) <= angle_max) angle_heel_score = 100;
             else
-                angle_heel_score = 100 - 
+                angle_heel_score = (float)(100 - (Math.Abs(heel_val) - angle_max) / 0.5 * 10);
+
+            if (Math.Abs(trim_val) <= angle_max) angle_trim_score = 100;
+            else
+                angle_trim_score = (float)(100 - (Math.Abs(trim_val) - angle_max) / 0.5 * 10);
+
+
             // calculate draft score
 
-            // calculate 
+            // calculate time speed
+
+            // accomplished score
+            accomplished_score = 100 * accomplished;            
         }
         #endregion
 
