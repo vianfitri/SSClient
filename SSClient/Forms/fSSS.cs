@@ -2401,6 +2401,12 @@ namespace SSClient.Forms
             // Calculate Score
             CalculateScore(accomplished);
 
+            // create id ss_execute
+            Random rnd = new Random();
+            string tmstr = ((DateTimeOffset)DateTime.UtcNow).ToUnixTimeSeconds().ToString();
+            string tm5last = tmstr.Substring(tmstr.Length - 5, 5);
+            string id_execute = rnd.Next(100, 999).ToString() + "_" + tm5last + "_" + rnd.Next(10, 99).ToString();
+
             // Save Value of Practic
             string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
                 "`id_practicum`, `id_student`, `tmmb_weight`, `tmmb_position`,`tmmd_wight`, `tmmd_position`," +
