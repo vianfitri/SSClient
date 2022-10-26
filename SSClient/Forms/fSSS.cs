@@ -36,7 +36,7 @@ namespace SSClient.Forms
         float time_elapsed = 0f;
 
         // Score criteria
-        float angle_max = 0;
+        float angle_max = 6;
         float draft_aft_max = 0;
         float draft_fwd_max = 0;
         float time_duration_max = 0;
@@ -2434,7 +2434,13 @@ namespace SSClient.Forms
 
         private void CalculateScore()
         {
+            // calculate angle score
+            if (Math.Abs(heel_val) <= angle_max) angle_heel_score = 100;
+            else
+                angle_heel_score = 100 - 
+            // calculate draft score
 
+            // calculate 
         }
         #endregion
 
