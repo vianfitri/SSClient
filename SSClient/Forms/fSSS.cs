@@ -2444,8 +2444,14 @@ namespace SSClient.Forms
             else
                 angle_trim_score = (float)(100 - (Math.Abs(trim_val) - angle_max) / 0.5 * 10);
 
-
             // calculate draft score
+            if (aft_draft <= draft_aft_max) aft_draft_score = 100;
+            else
+                aft_draft_score = (float)(100 - (aft_draft - draft_aft_max) / 0.5 * 10);
+
+            if (fwd_draft <= draft_fwd_max) fwd_draft_score = 100;
+            else
+                fwd_draft_score = (float)(100 - (fwd_draft - draft_fwd_max) / 0.5 * 10);
 
             // calculate time speed
 
