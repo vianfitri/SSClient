@@ -2404,7 +2404,9 @@ namespace SSClient.Forms
 
 
             // get draft data
-            VisualServer.visualconn.Send("");
+            VisualServer.visualconn.Send("Scoring,");
+            aft_draft = VisualServer.visualconn.DraftAft;
+            fwd_draft = VisualServer.visualconn.DraftFwd;
 
             // Calculate Score
             CalculateScore(accomplished);
