@@ -81,6 +81,9 @@ namespace SSClient.Forms
             int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
             Console.WriteLine(string.Format("Screen Working Area : {0}x{1}", screenWidth, screenHeight));
 
+            // Initialize Visual Server
+            VisualServer.visualconn.StartServer();
+
             if (loginId == -1)
             {
                 openChildForm(fLogin);

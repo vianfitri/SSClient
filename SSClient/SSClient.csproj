@@ -82,6 +82,7 @@
     <Compile Include="Class\ParamsGlobal.cs" />
     <Compile Include="Class\ReadWriteFile.cs" />
     <Compile Include="Class\StabilityCalculator.cs" />
+    <Compile Include="Class\VisualServer.cs" />
     <Compile Include="Forms\ClientProperties.cs">
       <SubType>Form</SubType>
     </Compile>
