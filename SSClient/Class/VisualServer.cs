@@ -41,6 +41,7 @@ namespace SSClient.Class
 
         private float draftAft;
         private float draftFwd;
+
         #endregion
 
         #region "Constructor"
@@ -48,6 +49,11 @@ namespace SSClient.Class
         {
 
         }
+        #endregion
+
+        #region "Properties"
+        public float DraftAft { get => draftAft; set => draftAft = value; }
+        public float DraftFwd { get => draftFwd; set => draftFwd = value; }
         #endregion
 
         #region "Method"
@@ -292,8 +298,8 @@ namespace SSClient.Class
 
             if(split_data[0] == "ExtDraft")
             {
-                draftAft = float.Parse(split_data[1]);
-                draftFwd = float.Parse(split_data[2]);
+                DraftAft = float.Parse(split_data[1]);
+                DraftFwd = float.Parse(split_data[2]);
             }
         }
         #endregion
