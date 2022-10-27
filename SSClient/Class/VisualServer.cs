@@ -38,6 +38,9 @@ namespace SSClient.Class
         private Task send = null;
         private Thread disconnect = null;
         private bool exit = false;
+
+        private float draftAft;
+        private float draftFwd;
         #endregion
 
         #region "Constructor"
@@ -92,6 +95,7 @@ namespace SSClient.Class
                     {
                         // get data from visual application
                         string msg = string.Format("{0}", obj.data);
+                        ParsingData(msg);
                         Console.WriteLine(msg);
                         obj.data.Clear();
                         obj.handle.Set();
@@ -280,6 +284,17 @@ namespace SSClient.Class
             exit = true;
             active = false;
             Disconnect();
+        }
+
+        private void ParsingData(string msg)
+        {
+            string[] split_data = msg.Split(',');
+
+            if(split_data[0] == "ExtDraft")
+            {
+                draftAft = float.Parse(split_data[1]);
+                draftFwd = float.Parse(split_data[2]);
+            }
         }
         #endregion
     }

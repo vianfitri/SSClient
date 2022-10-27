@@ -2402,6 +2402,10 @@ namespace SSClient.Forms
         {
             // generate random pract id
 
+
+            // get draft data
+            VisualServer.visualconn.Send("");
+
             // Calculate Score
             CalculateScore(accomplished);
 
