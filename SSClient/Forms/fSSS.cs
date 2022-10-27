@@ -1320,7 +1320,7 @@ namespace SSClient.Forms
             CalculateLongitudinalHydrostatic();
             DrawGZandKNCurves(); // 20150908
 
-            //Kirim();
+            SendShipDataTo3D();
         }
 
         private void nudHeelVal_ValueChanged(object sender, EventArgs e)
@@ -1338,7 +1338,7 @@ namespace SSClient.Forms
             CalculateTransverseHydrostatic();
             DrawGZandKNCurves(); // 20150908
 
-            //Kirim();
+            SendShipDataTo3D();
         }
 
         private void scbTrimVal_Scroll(object sender, ScrollEventArgs e)
@@ -1369,6 +1369,8 @@ namespace SSClient.Forms
             }
             scbTrimVal.Value = (int)(dTrimVal * 100);
             CalculateLongitudinalHydrostatic();
+
+            SendShipDataTo3D();
         }
 
         private void tabControlGraph_SelectedIndexChanged(object sender, EventArgs e)
@@ -1826,6 +1828,8 @@ namespace SSClient.Forms
             {
                 StabilityCalculator.Rotate_point(ref shippoints[i].x, ref shippoints[i].y, cX, cY, dHeelVal);
                 lat_shipform_series.Points.AddXY(shippoints[i].x, shippoints[i].y);
+
+                SendShipDataTo3D();
             }
 
             // draw WL (waterline), series 2, WL line
@@ -1991,7 +1995,7 @@ namespace SSClient.Forms
             {
                 StabilityCalculator.Rotate_point(ref shippointslon[i].x, ref shippointslon[i].y, 0, dDraftVal, -dTrimVal);
                 crtLongitudinal.Series[0].Points.AddXY(shippointslon[i].x, shippointslon[i].y);
-                // Kirim();
+                SendShipDataTo3D();
             }
 
             // define G0 point (G lightship) in Ship coordinate, 20150827
@@ -2463,6 +2467,14 @@ namespace SSClient.Forms
 
             // accomplished score
             accomplished_score = 100 * accomplished;            
+        }
+
+        private void SendShipDataTo3D()
+        {
+            string message = "Attitude," + heel_angle.ToString("F2") + "," +
+                trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2");
+
+            VisualServer.visualconn.Send(message);
         }
         #endregion
 
