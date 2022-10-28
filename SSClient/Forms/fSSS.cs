@@ -2497,5 +2497,10 @@ namespace SSClient.Forms
         {
             this._parent.StartTest();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this._parent.StopTest();
+        }
     }
 }
