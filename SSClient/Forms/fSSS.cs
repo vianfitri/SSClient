@@ -2431,7 +2431,7 @@ namespace SSClient.Forms
                 "`id_execute`,`id_student`,"+
                 "`angle_heel`,`angle_heel_score`,`angle_trim`,`angle_trim_score`,"+
                 "`draft_aft`,`draft_aft_score`,`draft_fwd`,`draft_fwd_score`," +
-                "`time_elapse`,`time_elapsed_score`," +
+                "`time_elapsed`,`time_elapsed_score`," +
                 "`is_accomplished`,`accomplished_score`) VALUES (" +
                 "1, 0," + 
                 heel_val + "," + angle_heel_score + "," + trim_val + "," + angle_trim_score + "," +
@@ -2480,6 +2480,9 @@ namespace SSClient.Forms
 
         private void SendShipDataTo3D()
         {
+            byte packetStart = 0x02;
+            byte packetEnd = 0x03;
+
             string message = heel_angle.ToString("F2") + "," +
                 trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2");
 
