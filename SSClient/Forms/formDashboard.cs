@@ -23,6 +23,8 @@ namespace SSClient
 
         System.Timers.Timer t;
         int h, m, s;
+        private float timeElapsed = 0; // in minute
+        private float timeStandard = 0; // in minute
         #endregion
 
         #region "Constructor"
