@@ -20,6 +20,9 @@ namespace SSClient
         formMain _parent;
         private Form activeForm = null;
         private DB mysqlDbConn;
+
+        System.Timers.Timer t;
+        int h, m, s;
         #endregion
 
         #region "Constructor"
@@ -134,6 +137,9 @@ namespace SSClient
             // Load Scenario and Duplicate DB Scen
             ScenLoad();
 
+            // Init Time For Test
+            InitTimeTest();
+
             loadLoginInfo(currentLogId);
 
             hideSubmenu();
@@ -216,6 +222,52 @@ namespace SSClient
                     Console.WriteLine("No Active Scenario");
                 }
             }
+        }
+
+        private void InitTimeTest()
+        {
+            t = new System.Timers.Timer();
+            t.Interval = 1000; // 1s
+            t.Elapsed += OnTimeEvent;
+        }
+
+        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                s += 1;
+                if (s == 60)
+                {
+                    s = 0;
+                    m += 1;
+                }
+                if (m == 60)
+                {
+                    m = 0;
+                    h += 1;
+                }
+                txtTimeE.Text = string.Format("{0}:{1}:{2}",
+                    h.ToString().PadLeft(2, '0'),
+                    m.ToString().PadLeft(2, '0'),
+                    s.ToString().PadLeft(2, '0')
+                    );
+            }));
+        }
+
+        public void StartTest()
+        {
+            t.Start();
+        }
+
+        public void StopTest()
+        {
+            t.Stop();
+
+            // Reset h, m, s
+            h = 0;
+            m = 0;
+            s = 0;
+            txtTimeE.Text = "00:00:00";
         }
         #endregion
     }
