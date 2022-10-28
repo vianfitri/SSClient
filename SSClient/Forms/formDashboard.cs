@@ -268,6 +268,7 @@ namespace SSClient
             m = 0;
             s = 0;
             txtTimeE.Text = "00:00:00";
+            txtStdTime.Text = "00:00:00";
         }
         #endregion
     }

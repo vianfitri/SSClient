@@ -42,7 +42,7 @@ namespace SSClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimeE = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtStdTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlMainMenu.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
@@ -216,7 +216,7 @@ namespace SSClient
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtStdTime);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtTimeE);
             this.panel1.Controls.Add(this.label1);
@@ -253,20 +253,20 @@ namespace SSClient
             this.txtTimeE.Text = "00:00:00";
             this.txtTimeE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // txtStdTime
             // 
-            this.textBox1.BackColor = System.Drawing.Color.DimGray;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(66, 121);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "00:00:00";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtStdTime.BackColor = System.Drawing.Color.DimGray;
+            this.txtStdTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStdTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStdTime.ForeColor = System.Drawing.Color.White;
+            this.txtStdTime.Location = new System.Drawing.Point(66, 121);
+            this.txtStdTime.Margin = new System.Windows.Forms.Padding(5);
+            this.txtStdTime.Name = "txtStdTime";
+            this.txtStdTime.ReadOnly = true;
+            this.txtStdTime.Size = new System.Drawing.Size(100, 22);
+            this.txtStdTime.TabIndex = 3;
+            this.txtStdTime.Text = "00:00:00";
+            this.txtStdTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -315,7 +315,7 @@ namespace SSClient
         private ViControls.ViButton btnLogout;
         private System.Windows.Forms.Panel hiddenPannel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtStdTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTimeE;
         private System.Windows.Forms.Label label1;
