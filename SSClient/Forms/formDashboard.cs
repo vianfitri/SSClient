@@ -42,6 +42,7 @@ namespace SSClient
             get { return mysqlDbConn; }
             set { mysqlDbConn = value; }
         }
+
         #endregion
 
         #region "Methods"
