@@ -18,9 +18,6 @@ namespace SSClient.Forms
 
         formDashboard _parent;
         private DB mysqlConn = null;
-        System.Timers.Timer t;
-        int th, tm;
-        int h, m, s;
 
         #region "Pract Variables To Save"
         int id_practicum = 0;
@@ -2489,35 +2486,6 @@ namespace SSClient.Forms
             VisualServer.visualconn.Send(message);
         }
 
-        private void InitTimeDuration()
-        {
-            t = new System.Timers.Timer();
-            t.Interval = 1000; // 1 second
-            t.Elapsed += OnTimeEvent;
-        }
-
-        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            Invoke(new Action(() =>
-            {
-                s += 1;
-                if(s == 60)
-                {
-                    s = 0;
-                    m += 1;
-                }
-                if(m == 60)
-                {
-                    m = 0;
-                    h += 1;
-                }
-                txtTime.Text = string.Format("{0}:{1}:{2}", 
-                    h.ToString().PadLeft(2, '0'),
-                    m.ToString().PadLeft(2, '0'),
-                    s.ToString().PadLeft(2, '0')
-                    );
-            }));
-        }
         #endregion
 
         private void btnReloadCFG_Click(object sender, EventArgs e)

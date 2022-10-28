@@ -45,6 +45,7 @@ namespace SSClient.Forms
             System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSSS));
             this.spcShipStability = new System.Windows.Forms.SplitContainer();
             this.tabControlGraph = new System.Windows.Forms.TabControl();
             this.tabLoad = new System.Windows.Forms.TabPage();
@@ -270,11 +271,6 @@ namespace SSClient.Forms
             this.cbbHSLineSelect = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.pnlTimer = new System.Windows.Forms.Panel();
-            this.txtTime = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
-            this.txtMaxTime = new System.Windows.Forms.TextBox();
-            this.label90 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.spcShipStability)).BeginInit();
             this.spcShipStability.Panel1.SuspendLayout();
             this.spcShipStability.Panel2.SuspendLayout();
@@ -334,7 +330,6 @@ namespace SSClient.Forms
             ((System.ComponentModel.ISupportInitialize)(this.nudMarkerSize)).BeginInit();
             this.tabGraphHSCurve.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHSLineWidth)).BeginInit();
-            this.pnlTimer.SuspendLayout();
             this.SuspendLayout();
             // 
             // spcShipStability
@@ -2563,7 +2558,7 @@ namespace SSClient.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::SSInstructor.Properties.Resources.PIP_SEMARANG_LOGO1;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(99, 271);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(215, 168);
@@ -3027,65 +3022,11 @@ namespace SSClient.Forms
             this.label31.TabIndex = 68;
             this.label31.Text = "Line";
             // 
-            // pnlTimer
-            // 
-            this.pnlTimer.Controls.Add(this.label90);
-            this.pnlTimer.Controls.Add(this.txtMaxTime);
-            this.pnlTimer.Controls.Add(this.label83);
-            this.pnlTimer.Controls.Add(this.txtTime);
-            this.pnlTimer.Location = new System.Drawing.Point(704, 0);
-            this.pnlTimer.Name = "pnlTimer";
-            this.pnlTimer.Size = new System.Drawing.Size(195, 151);
-            this.pnlTimer.TabIndex = 1;
-            // 
-            // txtTime
-            // 
-            this.txtTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTime.Location = new System.Drawing.Point(49, 38);
-            this.txtTime.Name = "txtTime";
-            this.txtTime.ReadOnly = true;
-            this.txtTime.Size = new System.Drawing.Size(100, 26);
-            this.txtTime.TabIndex = 0;
-            this.txtTime.Text = "00:00:00";
-            this.txtTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label83.Location = new System.Drawing.Point(42, 15);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(117, 16);
-            this.label83.TabIndex = 1;
-            this.label83.Text = "TIME ELAPSED";
-            // 
-            // txtMaxTime
-            // 
-            this.txtMaxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaxTime.Location = new System.Drawing.Point(49, 108);
-            this.txtMaxTime.Name = "txtMaxTime";
-            this.txtMaxTime.ReadOnly = true;
-            this.txtMaxTime.Size = new System.Drawing.Size(100, 26);
-            this.txtMaxTime.TabIndex = 2;
-            this.txtMaxTime.Text = "00:00:00";
-            this.txtMaxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label90.Location = new System.Drawing.Point(39, 84);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(118, 16);
-            this.label90.TabIndex = 3;
-            this.label90.Text = "MAXIMUM TIME";
-            // 
             // fSSS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 782);
-            this.Controls.Add(this.pnlTimer);
             this.Controls.Add(this.spcShipStability);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fSSS";
@@ -3159,8 +3100,6 @@ namespace SSClient.Forms
             this.tabGraphHSCurve.ResumeLayout(false);
             this.tabGraphHSCurve.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHSLineWidth)).EndInit();
-            this.pnlTimer.ResumeLayout(false);
-            this.pnlTimer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3392,10 +3331,5 @@ namespace SSClient.Forms
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button btnEndAssessment;
-        private System.Windows.Forms.Panel pnlTimer;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.TextBox txtTime;
-        private System.Windows.Forms.TextBox txtMaxTime;
-        private System.Windows.Forms.Label label90;
     }
 }
