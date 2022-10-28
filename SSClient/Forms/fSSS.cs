@@ -2401,7 +2401,7 @@ namespace SSClient.Forms
         private void SavePractValue(int accomplished = 0)
         {
             // generate random pract id
-
+            var id_practicum = 0;
 
             // get draft data
             VisualServer.visualconn.Send("Scoring,");
