@@ -18,6 +18,9 @@ namespace SSClient.Forms
 
         formDashboard _parent;
         private DB mysqlConn = null;
+        System.Timers.Timer t;
+        int th, tm;
+        int h, m, s;
 
         #region "Pract Variables To Save"
         int id_practicum = 0;
@@ -39,7 +42,7 @@ namespace SSClient.Forms
         float angle_max = 6;
         float draft_aft_max = 0;
         float draft_fwd_max = 0;
-        float time_duration_max = 0;
+        float time_duration_max = 0; // on minute
         
         // Score to save
         float angle_heel_score = 0;
@@ -2477,10 +2480,40 @@ namespace SSClient.Forms
 
         private void SendShipDataTo3D()
         {
-            string message = "Attitude," + heel_angle.ToString("F2") + "," +
+            string message = heel_angle.ToString("F2") + "," +
                 trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2");
 
             VisualServer.visualconn.Send(message);
+        }
+
+        private void InitTimeDuration()
+        {
+            t = new System.Timers.Timer();
+            t.Interval = 1000; // 1 second
+            t.Elapsed += OnTimeEvent;
+        }
+
+        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                s += 1;
+                if(s == 60)
+                {
+                    s = 0;
+                    m += 1;
+                }
+                if(m == 60)
+                {
+                    m = 0;
+                    h += 1;
+                }
+                txtTime.Text = string.Format("{0}:{1}:{2}", 
+                    h.ToString().PadLeft(2, '0'),
+                    m.ToString().PadLeft(2, '0'),
+                    s.ToString().PadLeft(2, '0')
+                    );
+            }));
         }
         #endregion
 
