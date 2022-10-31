@@ -272,6 +272,12 @@ namespace SSClient
 
         public void StartTest()
         {
+            int timeStdHour = (int)(timeStandard / 60);
+            int timeStdMinute = (int)(timeStandard - (timeStdHour * 60));
+            txtStdTime.Text = string.Format("{0}:{1}:{2}",
+                timeStdHour.ToString().PadLeft(2, '0'),
+                timeStdMinute.ToString().PadLeft(2, '0'),
+                "00");
             t.Start();
         }
 
