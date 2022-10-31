@@ -33,6 +33,7 @@ namespace SSClient
             InitializeComponent();
             customizeDesign();
             this._parent = parent;
+            t = new System.Timers.Timer();
         }
         #endregion
 
@@ -43,6 +44,17 @@ namespace SSClient
             set { mysqlDbConn = value; }
         }
 
+        public float TimeElapsed
+        {
+            get { return timeElapsed; }
+            set { timeElapsed = value; }
+        }
+
+        public float TimeStandard
+        {
+            get { return timeStandard; }
+            set { timeStandard = value; }
+        }
         #endregion
 
         #region "Methods"
@@ -229,7 +241,6 @@ namespace SSClient
 
         private void InitTimeTest()
         {
-            t = new System.Timers.Timer();
             t.Interval = 1000; // 1s
             t.Elapsed += OnTimeEvent;
         }
@@ -254,6 +265,8 @@ namespace SSClient
                     m.ToString().PadLeft(2, '0'),
                     s.ToString().PadLeft(2, '0')
                     );
+
+                timeElapsed = (h * 60) + m + (s / 60);
             }));
         }
 

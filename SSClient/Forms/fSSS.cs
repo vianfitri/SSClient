@@ -2375,11 +2375,14 @@ namespace SSClient.Forms
                 nudPosisiTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_position"].ToString());
                 nudPosisiTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_position"].ToString());
                 nudPosisiTNT.Value = decimal.Parse(dtInitPrac.Rows[0]["tnt_position"].ToString());
+                time_duration_max = float.Parse(dtInitPrac.Rows[0]["duration"].ToString());
+
+                this._parent.TimeStandard = time_duration_max;
+                this._parent.StartTest();
             }
 
             cbxUseHeelReal.Checked = true;
             cbxUseTrimReal.Checked = true;
-
         }
 
         private void SetPracValue()
