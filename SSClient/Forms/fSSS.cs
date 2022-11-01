@@ -2488,7 +2488,6 @@ namespace SSClient.Forms
 
             VisualServer.visualconn.Send(message);
         }
-
         #endregion
 
         private void btnReloadCFG_Click(object sender, EventArgs e)
