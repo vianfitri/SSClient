@@ -2406,8 +2406,11 @@ namespace SSClient.Forms
             // generate random pract id
             var id_practicum = 0;
 
+            string message = "scr$" + heel_angle.ToString("F2") + "," +
+                trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2") + "#";
+
             // get draft data
-            VisualServer.visualconn.Send("Scoring,");
+            VisualServer.visualconn.Send(message);
             aft_draft = VisualServer.visualconn.DraftAft;
             fwd_draft = VisualServer.visualconn.DraftFwd;
 
@@ -2480,11 +2483,8 @@ namespace SSClient.Forms
 
         private void SendShipDataTo3D()
         {
-            byte packetStart = 0x02;
-            byte packetEnd = 0x03;
-
-            string message = heel_angle.ToString("F2") + "," +
-                trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2");
+            string message = "att$" + heel_angle.ToString("F2") + "," +
+                trim_angle.ToString("F2") + "," + dWeightTotalShip.ToString("F2") + "#";
 
             VisualServer.visualconn.Send(message);
         }
