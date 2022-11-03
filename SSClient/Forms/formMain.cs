@@ -19,9 +19,6 @@ namespace SSClient.Forms
         #region "Fields"
 
         private Form activeForm = null;
-        private String loginUsername = "";
-        private int loginId = -1;
-        private DB mysqlDbConn;
         public formLogin fLogin = null;
         public formDashboard fDash = null;
 
@@ -37,21 +34,6 @@ namespace SSClient.Forms
         #endregion
 
         #region Properties
-        public string LoginUsername {
-            get { return loginUsername; }
-            set { loginUsername = value; }
-        }
-
-        public int LoginId {
-            get { return loginId; }
-            set { loginId = value; }
-        }
-
-        public DB DBConn
-        {
-            get { return mysqlDbConn; }
-            set { mysqlDbConn = value; }
-        }
         #endregion
 
         #region Method
@@ -84,7 +66,7 @@ namespace SSClient.Forms
             // Initialize Visual Server
             VisualServer.visualconn.StartServer();
 
-            if (loginId == -1)
+            if (!UserController.isLogin)
             {
                 openChildForm(fLogin);
             }
