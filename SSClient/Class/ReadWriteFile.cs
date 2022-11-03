@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SSClient.Class
 {
-    class ReadWriteFile
+    public class ReadWriteFile
     {
         #region "Fields"
         private string errMessage;

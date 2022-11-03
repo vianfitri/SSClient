@@ -71,6 +71,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ConnectorDB.cs" />
     <Compile Include="Class\ControlExtensions.cs" />
     <Compile Include="Class\DB.cs" />
     <Compile Include="Class\ExerciseController.cs" />
