@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C909F515-5041-46A4-A034-B08226B3E062}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SSInstructor</RootNamespace>
-    <AssemblyName>SSInstructor</AssemblyName>
+    <RootNamespace>SSClient</RootNamespace>
+    <AssemblyName>SSClient</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
