@@ -45,6 +45,7 @@ namespace SSClient
             this.lblUsername = new System.Windows.Forms.Label();
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnShip = new FontAwesome.Sharp.IconButton();
             this.pnlMainMenu.SuspendLayout();
             this.pnlTimerTest.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
@@ -54,6 +55,7 @@ namespace SSClient
             // pnlMainMenu
             // 
             this.pnlMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.pnlMainMenu.Controls.Add(this.btnShip);
             this.pnlMainMenu.Controls.Add(this.pnlTimerTest);
             this.pnlMainMenu.Controls.Add(this.hiddenPannel);
             this.pnlMainMenu.Controls.Add(this.btnSettings);
@@ -280,6 +282,31 @@ namespace SSClient
             this.pnlContent.Size = new System.Drawing.Size(1334, 821);
             this.pnlContent.TabIndex = 1;
             // 
+            // btnShip
+            // 
+            this.btnShip.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnShip.FlatAppearance.BorderSize = 0;
+            this.btnShip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShip.ForeColor = System.Drawing.Color.White;
+            this.btnShip.IconChar = FontAwesome.Sharp.IconChar.Ship;
+            this.btnShip.IconColor = System.Drawing.Color.White;
+            this.btnShip.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnShip.IconSize = 24;
+            this.btnShip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShip.Location = new System.Drawing.Point(0, 344);
+            this.btnShip.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShip.Name = "btnShip";
+            this.btnShip.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.btnShip.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnShip.Size = new System.Drawing.Size(250, 45);
+            this.btnShip.TabIndex = 25;
+            this.btnShip.Text = "Ship Data";
+            this.btnShip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShip.UseVisualStyleBackColor = true;
+            this.btnShip.Visible = false;
+            // 
             // formDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +348,7 @@ namespace SSClient
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTimeE;
         private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton btnShip;
     }
 }
 
