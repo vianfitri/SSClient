@@ -127,4 +127,13 @@
   <data name="Maritime Safety" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Maritime Safety2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BC50000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BC50000.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FC4180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FC4180.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GC3650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GC3650.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
