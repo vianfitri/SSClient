@@ -16,15 +16,6 @@ namespace SSClient
     {
         #region "Fields"
         formMain _parent;
-        private DB mysqlDBConn;
-        private ReadWriteFile appConf;
-
-        private string[] dataString = new string[4];
-        private string[] identifiedString = { "[MySQL]", "Server=", "Port=", "Uid=", "Pwd="};
-        private string dbServer, dbPort, dbUid, dbPwd;
-
-        private string configDir =
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\ShipStab";
         #endregion
 
         #region "Constructor"
@@ -32,39 +23,11 @@ namespace SSClient
         {
             InitializeComponent();
 
-            // init
-            mysqlDBConn = new DB();
-            appConf = new ReadWriteFile();
-
             this._parent = parent;
         }
         #endregion
 
         #region "Methods"
-        private bool LoadConfig()
-        {
-            bool stat = appConf.LoadConfig(configDir, "db.ini", identifiedString, ref dataString);
-
-            if (stat)
-            {
-                dbServer = dataString[0];
-                dbPort = dataString[1];
-                dbUid = dataString[2];
-                dbPwd = dataString[3];
-            }
-
-            return stat;
-        }
-
-        private bool SaveConfig()
-        {
-            bool stat = appConf.SaveConfig(configDir, "db.ini", identifiedString, ref dataString);
-
-            if (!stat)
-                MessageBox.Show(appConf.ErrorMessage, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            return stat;
-        }
         #endregion
 
         #region "Events"
@@ -90,14 +53,14 @@ namespace SSClient
             this.Cursor = Cursors.WaitCursor;
 
             // Check MySQL State
-            if (!mysqlDBConn.GetDBStatus())
+            if (!ConnectorDB.MySQLConn.GetDBStatus())
             {
                 btnConfig.Enabled = true;
                 btnConfig.Visible = true;
 
                 this.Cursor = Cursors.Default;
 
-                MessageBox.Show(mysqlDBConn.ErrorMessage +
+                MessageBox.Show(ConnectorDB.MySQLConn.ErrorMessage +
                     "\r\nPlease check whether database server is active? Or set up new configuration for database server!",
                     "Info...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -109,30 +72,28 @@ namespace SSClient
 
             string queryString = "SELECT * FROM shp_assets.ss_user a " +
                 "INNER JOIN shp_assets.ss_subject b " +
-                "ON a.id_subject = b.idsubject " +
-                "WHERE a.u_name = '" + txtUsername.Texts + "' " + 
+                "ON a.uc_subject = b.uc " +
+                "WHERE a.u_name = '" + txtUsername.Texts + "' " +
                 "AND a.u_pass = MD5('" + txtPassword.Texts + "') " +
                 "AND b.type = 3 LIMIT 0, 1";
 
-            if(mysqlDBConn.GetTotalRow(queryString, ref num))
+            if (ConnectorDB.MySQLConn.GetTotalRow(queryString, ref num))
             {
                 if(num == 1)
                 {
-                    MessageBox.Show("Login Success");
-
                     // fetch login id
-                    int logId = -1;
+                    string logId = "";
                     string uName = "";
                     string uPass = "";
-                    mysqlDBConn.GetData(queryString, "id_subject", ref logId);
-                    mysqlDBConn.GetData(queryString, "u_name", ref uName);
-                    mysqlDBConn.GetData(queryString, "u_pass", ref uPass);
+                    ConnectorDB.MySQLConn.GetData(queryString, "uc_subject", ref logId);
+                    ConnectorDB.MySQLConn.GetData(queryString, "u_name", ref uName);
+                    ConnectorDB.MySQLConn.GetData(queryString, "u_pass", ref uPass);
                     //MessageBox.Show("LoginID :" + logId.ToString() + 
                     //    "\r\nUsername : " + uName +
                     //    "\r\nPassword : " + uPass);
-                    this._parent.DBConn = mysqlDBConn;
-                    this._parent.LoginId = logId;
-                    
+                    UserController.isLogin = true;
+                    UserController.currentUcUser = logId;
+
                 } 
                 else
                 {
@@ -148,7 +109,7 @@ namespace SSClient
             else
             {
                 this.Cursor = Cursors.Default;
-                MessageBox.Show(mysqlDBConn.ErrorMessage, "Info...",
+                MessageBox.Show(ConnectorDB.MySQLConn.ErrorMessage, "Info...",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return;
@@ -162,29 +123,29 @@ namespace SSClient
         {
             using(fDbConfig fConfigDb = new fDbConfig())
             {
-                fConfigDb.DbServer = dbServer;
-                fConfigDb.DbPort = dbPort;
-                fConfigDb.DbUsername = dbUid;
-                fConfigDb.DbPassword = dbPwd;
+                fConfigDb.DbServer = ConnectorDB.dbServer;
+                fConfigDb.DbPort = ConnectorDB.dbPort;
+                fConfigDb.DbUsername = ConnectorDB.dbUid;
+                fConfigDb.DbPassword = ConnectorDB.dbPwd;
 
                 if(fConfigDb.ShowDialog() == DialogResult.OK)
                 {
-                    dbServer = fConfigDb.DbServer;
-                    dbPort = fConfigDb.DbPort;
-                    dbUid = fConfigDb.DbUsername;
-                    dbPwd = fConfigDb.DbPassword;
+                    ConnectorDB.dbServer = fConfigDb.DbServer;
+                    ConnectorDB.dbPort = fConfigDb.DbPort;
+                    ConnectorDB.dbUid = fConfigDb.DbUsername;
+                    ConnectorDB.dbPwd = fConfigDb.DbPassword;
 
-                    dataString[0] = dbServer;
-                    dataString[1] = dbPort;
-                    dataString[2] = dbUid;
-                    dataString[3] = dbPwd;
+                    ConnectorDB.dataString[0] = ConnectorDB.dbServer;
+                    ConnectorDB.dataString[1] = ConnectorDB.dbPort;
+                    ConnectorDB.dataString[2] = ConnectorDB.dbUid;
+                    ConnectorDB.dataString[3] = ConnectorDB.dbPwd;
 
-                    if(!SaveConfig())
+                    if(!ConnectorDB.SaveConfig())
                     {
-                        MessageBox.Show(appConf.ErrorMessage, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ConnectorDB.appConf.ErrorMessage, "Error...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    SetMySqlConfig();
+                    ConnectorDB.SetConfig();
                 }
             }
         }
@@ -200,9 +161,9 @@ namespace SSClient
         private void formLogin_Load(object sender, EventArgs e)
         {
             // Load D Configuration
-            if(!LoadConfig())
+            if(!ConnectorDB.LoadConfig())
             {
-                SetDefaultConfig();
+                ConnectorDB.SetDefault();
 
                 btnConfig.Enabled = true;
                 btnConfig.Visible = true;
@@ -214,24 +175,9 @@ namespace SSClient
             }
 
             // Set configuration for MySql
-            SetMySqlConfig();
+            ConnectorDB.SetConfig();
         }
 
-        private void SetMySqlConfig()
-        {
-            mysqlDBConn.DbHost = dbServer;
-            mysqlDBConn.DbPort = dbPort;
-            mysqlDBConn.DbUser = dbUid;
-            mysqlDBConn.DbPassword = dbPwd;
-        }
-
-        private void SetDefaultConfig()
-        {
-            dbServer = "localhost";
-            dbPort = "3306";
-            dbUid = "root";
-            dbPwd = "admin123!";
-        }
         #endregion
 
     }
