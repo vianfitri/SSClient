@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Class\ControlExtensions.cs" />
     <Compile Include="Class\DB.cs" />
+    <Compile Include="Class\ExerciseController.cs" />
     <Compile Include="Class\IniFiles.cs" />
     <Compile Include="Class\Machines.cs" />
     <Compile Include="Class\ModalPopup.cs">
@@ -82,6 +83,8 @@
     <Compile Include="Class\ParamsGlobal.cs" />
     <Compile Include="Class\ReadWriteFile.cs" />
     <Compile Include="Class\StabilityCalculator.cs" />
+    <Compile Include="Class\UserController.cs" />
+    <Compile Include="Class\Utility.cs" />
     <Compile Include="Class\VisualServer.cs" />
     <Compile Include="Forms\ClientProperties.cs">
       <SubType>Form</SubType>

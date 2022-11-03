@@ -699,7 +699,7 @@ namespace SSClient.Forms
 
             // Chart Transversal
             crtTransversal.Titles.Clear();
-            crtTransversal.Titles.Add("Kapal Bulk Carrier - MV TIRAM");
+            crtTransversal.Titles.Add("Kapal Bulk Carrier");
             crtTransversal.Titles.Add("Penampang Kapal, Amidship, Tampak Depan");
             crtTransversal.Titles[0].Font = new Font("Microsoft Sans Serif", 16);
             crtTransversal.Titles[1].Font = new Font("Microsoft Sans Serif", 16);
@@ -727,7 +727,7 @@ namespace SSClient.Forms
 
             // Chart Longitudinal
             crtLongitudinal.Titles.Clear();
-            crtLongitudinal.Titles.Add("Kapal Bulk Carrier - MV TIRAM");
+            crtLongitudinal.Titles.Add("Kapal Bulk Carrier");
             crtLongitudinal.Titles.Add("Bidang Membujur Kapal");
             crtLongitudinal.Titles[0].Font = new Font("Microsoft Sans Serif", 16);
             crtLongitudinal.Titles[1].Font = new Font("Microsoft Sans Serif", 16);
@@ -825,7 +825,7 @@ namespace SSClient.Forms
 
             // Chart Hydrostatic Curve
             crtHydrostaticCurve.Titles.Clear();
-            crtHydrostaticCurve.Titles.Add("Kapal Bulk Carrier - MV TIRAM");
+            crtHydrostaticCurve.Titles.Add("Kapal Bulk Carrier");
             crtHydrostaticCurve.Titles.Add("Kurva Hidrostatik");
             crtHydrostaticCurve.Titles[0].Font = new Font("Microsoft Sans Serif", 16);
             crtHydrostaticCurve.Titles[1].Font = new Font("Microsoft Sans Serif", 16);
@@ -851,13 +851,13 @@ namespace SSClient.Forms
 
             // Chart GZ and KN Curve
             crtGZCrossCurve.Titles.Clear();
-            crtGZCrossCurve.Titles.Add("Kapal Bulk Carrier - MV TIRAM");
+            crtGZCrossCurve.Titles.Add("Kapal Bulk Carrier");
             crtGZCrossCurve.Titles.Add("Kurva Silang GZ");
             crtGZCrossCurve.Titles[0].Font = new Font("Microsoft Sans Serif", 16);
             crtGZCrossCurve.Titles[1].Font = new Font("Microsoft Sans Serif", 16);
 
             crtKNCrossCurve.Titles.Clear();
-            crtKNCrossCurve.Titles.Add("Kapal Bulk Carrier - MV TIRAM");
+            crtKNCrossCurve.Titles.Add("Kapal Bulk Carrier");
             crtKNCrossCurve.Titles.Add("Kurva Silang KN");
             crtKNCrossCurve.Titles[0].Font = new Font("Microsoft Sans Serif", 16);
             crtKNCrossCurve.Titles[1].Font = new Font("Microsoft Sans Serif", 16);
