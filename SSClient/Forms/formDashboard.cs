@@ -158,11 +158,23 @@ namespace SSClient
             // Load Exercise mode
             LoadExercise();
 
-            // Load Scenario and Duplicate DB Scen
-            ScenLoad();
+            if(ExerciseController.EMode == ExerciseController.ExerciseMode.Test)
+            {
+                btnStability.Visible = false;
+               
+                // Load Scenario and Duplicate DB Scen
+                ScenLoad();
 
-            // Init Time For Test
-            InitTimeTest();
+                // Init Time For Test
+                InitTimeTest();
+
+                pnlTimerTest.Visible = true;
+            }
+            else
+            {
+                btnStability.Visible = true;
+                pnlTimerTest.Visible = false;
+            }
 
             loadLoginInfo(UserController.currentUcUser);
 
@@ -203,8 +215,8 @@ namespace SSClient
                         int ScenPractNum = 0;
                         // get data scenario practicum for student. if null created
                         string qScenPra = "SELECT * FROM `shp_assets`.`ss_scenario_practicum` " +
-                            "WHERE uc_scenario = " + dActScen.Rows[0]["uc"] + " " +
-                            "AND uc_student = " + UserController.currentUcUser;
+                            "WHERE uc_scenario = '" + dActScen.Rows[0]["uc"] + "' " +
+                            "AND uc_student = '" + UserController.currentUcUser + "'";
 
                         if (ConnectorDB.MySQLConn.GetTotalRow(qScenPra, ref ScenPractNum))
                         {
@@ -214,7 +226,7 @@ namespace SSClient
                                 DataTable dScenPra = new DataTable();
                                 if(ConnectorDB.MySQLConn.GetTableData(qScenPra, ref dScenPra))
                                 {
-                                    ParamsGlobal.test_db_name = dScenPra.Rows[0]["db_name"].ToString();
+                                    ExerciseController.CurrentDBName = dScenPra.Rows[0]["db_name"].ToString();
                                     btnStability_Click(null,null);
                                 }
                             }
@@ -229,18 +241,20 @@ namespace SSClient
                                     // insert data to Scenario Practicum table
                                     string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum` " +
                                         "(" +
+                                        "`uc`, " +
                                         "`uc_scenario`," +
                                         "`db_name`," +
                                         "`uc_student`" +
-                                        ") VALUES (" + 
-                                        dActScen.Rows[0]["uc"] + "," +
+                                        ") VALUES (" +
+                                        "'" + UserController.currentUcUser + "'," +
+                                        "'" + dActScen.Rows[0]["uc"] + "'," +
                                         "'" + toDB + "'," + 
-                                        UserController.currentUcUser + 
+                                        "'" + UserController.currentUcUser + "'" + 
                                         ")";
 
                                     if (ConnectorDB.MySQLConn.SetCommand(qInScenPra))
                                     {
-                                        ParamsGlobal.test_db_name = toDB;
+                                        ExerciseController.CurrentDBName = toDB;
                                         btnStability_Click(null, null);
                                     }
                                 }
