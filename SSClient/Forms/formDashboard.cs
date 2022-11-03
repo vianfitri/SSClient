@@ -51,6 +51,24 @@ namespace SSClient
         #endregion
 
         #region "Methods"
+        private void LoadExercise()
+        {
+            string qExerc = "SELECT * FROM `shp_assets`.`ss_exercise` WHERE uc = '111-11111-11'";
+            int exerciseMode = 0;
+
+            if (ConnectorDB.MySQLConn.GetData(qExerc, "mode", ref exerciseMode))
+            {
+                if (exerciseMode == 0)
+                {
+                    ExerciseController.EMode = ExerciseController.ExerciseMode.Training;
+                }
+                else if (exerciseMode == 1)
+                {
+                    ExerciseController.EMode = ExerciseController.ExerciseMode.Test;
+                }
+            }
+        }
+
         private void customizeDesign()
         {
         }
@@ -136,6 +154,9 @@ namespace SSClient
         {
             // Load default content
             openChildForm(new formWelcome());
+
+            // Load Exercise mode
+            LoadExercise();
 
             // Load Scenario and Duplicate DB Scen
             ScenLoad();

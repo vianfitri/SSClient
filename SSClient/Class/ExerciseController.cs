@@ -19,7 +19,7 @@ namespace SSClient.Class
         #region "Fields"
         static ExerciseMode eMode;
         static string currScenUC;
-        static string currDBName;
+        static string currDBName; // current DB name for practicum test
         static int vessel_type = 0; // 0 = bulk carrier, 1=general cargo, 2=container
         static int reason = 0; //0 = practice, 1 = settings scen
         #endregion
