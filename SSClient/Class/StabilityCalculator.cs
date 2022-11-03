@@ -247,6 +247,7 @@ public static class StabilityCalculator {
     public static double zCGTotalShip;
 
     public static double ship_scale = 87.0;
+    public static double ship_gc_scale = 50.0;
     public static double heel_angle = 0; // in deg
     public static double trim_angle = 0; // in deg
 
