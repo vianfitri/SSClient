@@ -30,6 +30,11 @@ namespace SSClient
         private void InitializeComponent()
         {
             this.pnlMainMenu = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtStdTime = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTimeE = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.hiddenPannel = new System.Windows.Forms.Panel();
             this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.btnStability = new FontAwesome.Sharp.IconButton();
@@ -39,15 +44,10 @@ namespace SSClient
             this.lblUsername = new System.Windows.Forms.Label();
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTimeE = new System.Windows.Forms.TextBox();
-            this.txtStdTime = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlMainMenu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPic)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainMenu
@@ -64,6 +64,72 @@ namespace SSClient
             this.pnlMainMenu.Name = "pnlMainMenu";
             this.pnlMainMenu.Size = new System.Drawing.Size(250, 821);
             this.pnlMainMenu.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtStdTime);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtTimeE);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 170);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(3);
+            this.panel1.Size = new System.Drawing.Size(250, 174);
+            this.panel1.TabIndex = 24;
+            // 
+            // txtStdTime
+            // 
+            this.txtStdTime.BackColor = System.Drawing.Color.DimGray;
+            this.txtStdTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStdTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStdTime.ForeColor = System.Drawing.Color.White;
+            this.txtStdTime.Location = new System.Drawing.Point(66, 121);
+            this.txtStdTime.Margin = new System.Windows.Forms.Padding(5);
+            this.txtStdTime.Name = "txtStdTime";
+            this.txtStdTime.ReadOnly = true;
+            this.txtStdTime.Size = new System.Drawing.Size(100, 22);
+            this.txtStdTime.TabIndex = 3;
+            this.txtStdTime.Text = "00:00:00";
+            this.txtStdTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(60, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 18);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Maximum Time";
+            // 
+            // txtTimeE
+            // 
+            this.txtTimeE.BackColor = System.Drawing.Color.DimGray;
+            this.txtTimeE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTimeE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimeE.ForeColor = System.Drawing.Color.White;
+            this.txtTimeE.Location = new System.Drawing.Point(66, 48);
+            this.txtTimeE.Margin = new System.Windows.Forms.Padding(5);
+            this.txtTimeE.Name = "txtTimeE";
+            this.txtTimeE.ReadOnly = true;
+            this.txtTimeE.Size = new System.Drawing.Size(100, 22);
+            this.txtTimeE.TabIndex = 1;
+            this.txtTimeE.Text = "00:00:00";
+            this.txtTimeE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(66, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Elapsed Time";
             // 
             // hiddenPannel
             // 
@@ -213,72 +279,6 @@ namespace SSClient
             this.pnlContent.Size = new System.Drawing.Size(1334, 821);
             this.pnlContent.TabIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtStdTime);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtTimeE);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 170);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(250, 174);
-            this.panel1.TabIndex = 24;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(66, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Elapsed Time";
-            // 
-            // txtTimeE
-            // 
-            this.txtTimeE.BackColor = System.Drawing.Color.DimGray;
-            this.txtTimeE.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTimeE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimeE.ForeColor = System.Drawing.Color.White;
-            this.txtTimeE.Location = new System.Drawing.Point(66, 48);
-            this.txtTimeE.Margin = new System.Windows.Forms.Padding(5);
-            this.txtTimeE.Name = "txtTimeE";
-            this.txtTimeE.ReadOnly = true;
-            this.txtTimeE.Size = new System.Drawing.Size(100, 22);
-            this.txtTimeE.TabIndex = 1;
-            this.txtTimeE.Text = "00:00:00";
-            this.txtTimeE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtStdTime
-            // 
-            this.txtStdTime.BackColor = System.Drawing.Color.DimGray;
-            this.txtStdTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStdTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStdTime.ForeColor = System.Drawing.Color.White;
-            this.txtStdTime.Location = new System.Drawing.Point(66, 121);
-            this.txtStdTime.Margin = new System.Windows.Forms.Padding(5);
-            this.txtStdTime.Name = "txtStdTime";
-            this.txtStdTime.ReadOnly = true;
-            this.txtStdTime.Size = new System.Drawing.Size(100, 22);
-            this.txtStdTime.TabIndex = 3;
-            this.txtStdTime.Text = "00:00:00";
-            this.txtStdTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(60, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Maximum Time";
-            // 
             // formDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,12 +292,13 @@ namespace SSClient
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SSClient";
             this.Load += new System.EventHandler(this.formDashboard_Load);
+            this.VisibleChanged += new System.EventHandler(this.formDashboard_VisibleChanged);
             this.pnlMainMenu.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlUserPic.ResumeLayout(false);
             this.pnlUserPic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPic)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

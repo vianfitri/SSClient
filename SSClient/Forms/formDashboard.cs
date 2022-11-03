@@ -19,7 +19,6 @@ namespace SSClient
         #region "Fields"
         formMain _parent;
         private Form activeForm = null;
-        private DB mysqlDbConn;
 
         System.Timers.Timer t;
         int h, m, s;
@@ -38,12 +37,6 @@ namespace SSClient
         #endregion
 
         #region "Properties"
-        public DB MySQLConn
-        {
-            get { return mysqlDbConn; }
-            set { mysqlDbConn = value; }
-        }
-
         public float TimeElapsed
         {
             get { return timeElapsed; }
@@ -83,20 +76,20 @@ namespace SSClient
                 subMenu.Visible = false;
         }
 
-        private void loadLoginInfo(int logId)
+        private void loadLoginInfo(string logId)
         {
             DataTable dtLoginInfo = new DataTable();
-            string qrStr = "SELECT a.idss_user, " +
+            string qrStr = "SELECT a.uc, " +
                 "b.first_name, b.last_name, b.birthday, b.sex, b.email, b.photos, " +
                 "c.typename " +
                 "FROM shp_assets.ss_user a " +
                 "INNER JOIN shp_assets.ss_subject b " +
-                "ON a.id_subject = b.idsubject " +
+                "ON a.uc_subject = b.uc " +
                 "INNER JOIN shp_assets.ss_usertype c " +
                 "ON b.type = c.id " +
-                "WHERE a.idss_user = " + logId + " LIMIT 0, 1";
+                "WHERE a.uc = " + logId + " LIMIT 0, 1";
 
-            if(mysqlDbConn.GetTableData(qrStr, ref dtLoginInfo))
+            if (ConnectorDB.MySQLConn.GetTableData(qrStr, ref dtLoginInfo))
             {
                 lblUsername.Text = dtLoginInfo.Rows[0]["first_name"].ToString();
                 lblPriviledge.Text = dtLoginInfo.Rows[0]["typename"].ToString();
@@ -115,7 +108,8 @@ namespace SSClient
         {
             if (MessageBox.Show("Are you sure to logout ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                this._parent.LoginId = -1;
+                UserController.isLogin = false;
+                UserController.currentUcUser = "";
                 this._parent.openChildForm(this._parent.fLogin);
                 openChildForm(new formWelcome());
             }
@@ -143,19 +137,13 @@ namespace SSClient
             // Load default content
             openChildForm(new formWelcome());
 
-            // set mysql data connector
-            mysqlDbConn = this._parent.DBConn;
-
-            // fetch login user information
-            int currentLogId = this._parent.LoginId;
-
             // Load Scenario and Duplicate DB Scen
             ScenLoad();
 
             // Init Time For Test
             InitTimeTest();
 
-            loadLoginInfo(currentLogId);
+            loadLoginInfo(UserController.currentUcUser);
 
             hideSubmenu();
         }
@@ -183,27 +171,27 @@ namespace SSClient
 
             string qActScen = "SELECT * FROM `shp_assets`.`ss_scenario` WHERE is_active = 1";
 
-            if (mysqlDbConn.GetTotalRow(qActScen, ref activeScenNum))
+            if (ConnectorDB.MySQLConn.GetTotalRow(qActScen, ref activeScenNum))
             {
                 if (activeScenNum > 0)
                 {
                     // get data from active scenario
                     DataTable dActScen = new DataTable();
-                    if (mysqlDbConn.GetTableData(qActScen, ref dActScen))
+                    if (ConnectorDB.MySQLConn.GetTableData(qActScen, ref dActScen))
                     {
                         int ScenPractNum = 0;
                         // get data scenario practicum for student. if null created
                         string qScenPra = "SELECT * FROM `shp_assets`.`ss_scenario_practicum` " +
-                            "WHERE id_scenario = " + dActScen.Rows[0]["id"] + " " +
-                            "AND id_student = " + this._parent.LoginId;
+                            "WHERE uc_scenario = " + dActScen.Rows[0]["uc"] + " " +
+                            "AND uc_student = " + UserController.currentUcUser;
 
-                        if (mysqlDbConn.GetTotalRow(qScenPra, ref ScenPractNum))
+                        if (ConnectorDB.MySQLConn.GetTotalRow(qScenPra, ref ScenPractNum))
                         {
                             if (ScenPractNum > 0)
                             {
                                 // get database name for student practicum
                                 DataTable dScenPra = new DataTable();
-                                if(mysqlDbConn.GetTableData(qScenPra, ref dScenPra))
+                                if(ConnectorDB.MySQLConn.GetTableData(qScenPra, ref dScenPra))
                                 {
                                     ParamsGlobal.test_db_name = dScenPra.Rows[0]["db_name"].ToString();
                                     btnStability_Click(null,null);
@@ -213,16 +201,23 @@ namespace SSClient
                             {
                                 // duplicate database
                                 string fromDB = dActScen.Rows[0]["db_name"].ToString();
-                                string toDB = dActScen.Rows[0]["db_name"].ToString() + "_" + this._parent.LoginId;
+                                string toDB = dActScen.Rows[0]["db_name"].ToString() + "_" + UserController.currentUcUser;
 
-                                if(mysqlDbConn.DuplicateDB(fromDB, toDB))
+                                if(ConnectorDB.MySQLConn.DuplicateDB(fromDB, toDB))
                                 {
                                     // insert data to Scenario Practicum table
-                                    string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum`(" +
-                                        "`id_scenario`,`db_name`,`id_student`) VALUES (" + dActScen.Rows[0]["id"] + "," +
-                                        "'" + toDB + "', " + this._parent.LoginId + ")";
+                                    string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum` " +
+                                        "(" +
+                                        "`uc_scenario`," +
+                                        "`db_name`," +
+                                        "`uc_student`" +
+                                        ") VALUES (" + 
+                                        dActScen.Rows[0]["uc"] + "," +
+                                        "'" + toDB + "'," + 
+                                        UserController.currentUcUser + 
+                                        ")";
 
-                                    if (mysqlDbConn.SetCommand(qInScenPra))
+                                    if (ConnectorDB.MySQLConn.SetCommand(qInScenPra))
                                     {
                                         ParamsGlobal.test_db_name = toDB;
                                         btnStability_Click(null, null);
@@ -291,6 +286,14 @@ namespace SSClient
             s = 0;
             txtTimeE.Text = "00:00:00";
             txtStdTime.Text = "00:00:00";
+        }
+
+        private void formDashboard_VisibleChanged(object sender, EventArgs e)
+        {
+            if (UserController.isLogin)
+            {
+                loadLoginInfo(UserController.currentUcUser);
+            }
         }
         #endregion
     }
