@@ -48,7 +48,7 @@ namespace SSClient
             // 
             // pnlBackground
             // 
-            this.pnlBackground.BackgroundImage = global::SSInstructor.Properties.Resources.Maritime_Safety1;
+            this.pnlBackground.BackgroundImage = global::SSClient.Properties.Resources.Maritime_Safety;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlBackground.Controls.Add(this.btnConfig);
             this.pnlBackground.Controls.Add(this.label2);
@@ -56,7 +56,7 @@ namespace SSClient
             this.pnlBackground.Controls.Add(this.pnlLogin);
             this.pnlBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
-            this.pnlBackground.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBackground.Name = "pnlBackground";
             this.pnlBackground.Size = new System.Drawing.Size(1215, 748);
             this.pnlBackground.TabIndex = 0;
@@ -74,7 +74,7 @@ namespace SSClient
             this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfig.ForeColor = System.Drawing.Color.White;
             this.btnConfig.Location = new System.Drawing.Point(1191, 10);
-            this.btnConfig.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfig.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(15, 16);
             this.btnConfig.TabIndex = 3;
@@ -118,7 +118,7 @@ namespace SSClient
             this.pnlLogin.Controls.Add(this.lblUsername);
             this.pnlLogin.Controls.Add(this.panel1);
             this.pnlLogin.Location = new System.Drawing.Point(781, 103);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(2);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(283, 336);
             this.pnlLogin.TabIndex = 0;
@@ -137,7 +137,7 @@ namespace SSClient
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(47, 238);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(188, 37);
             this.btnLogin.TabIndex = 6;
@@ -227,7 +227,7 @@ namespace SSClient
             this.panel1.Controls.Add(this.lblLogin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 42);
             this.panel1.TabIndex = 1;
@@ -252,7 +252,7 @@ namespace SSClient
             this.Controls.Add(this.pnlBackground);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "formLogin";
             this.Text = "formLogin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

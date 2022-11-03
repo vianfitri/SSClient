@@ -50,7 +50,7 @@ namespace SSClient
                 return;
             }
 
-            this.Cursor = Cursors.WaitCursor;
+            //this.Cursor = Cursors.WaitCursor;
 
             // Check MySQL State
             if (!ConnectorDB.MySQLConn.GetDBStatus())
@@ -93,6 +93,9 @@ namespace SSClient
                     //    "\r\nPassword : " + uPass);
                     UserController.isLogin = true;
                     UserController.currentUcUser = logId;
+
+                    txtUsername.Texts = "";
+                    txtPassword.Texts = "";
 
                 } 
                 else
