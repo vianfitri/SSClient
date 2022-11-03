@@ -29,8 +29,9 @@ namespace SSClient
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formDashboard));
             this.pnlMainMenu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTimerTest = new System.Windows.Forms.Panel();
             this.txtStdTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTimeE = new System.Windows.Forms.TextBox();
@@ -45,7 +46,7 @@ namespace SSClient
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlMainMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlTimerTest.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPic)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +54,7 @@ namespace SSClient
             // pnlMainMenu
             // 
             this.pnlMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.pnlMainMenu.Controls.Add(this.panel1);
+            this.pnlMainMenu.Controls.Add(this.pnlTimerTest);
             this.pnlMainMenu.Controls.Add(this.hiddenPannel);
             this.pnlMainMenu.Controls.Add(this.btnSettings);
             this.pnlMainMenu.Controls.Add(this.btnStability);
@@ -65,19 +66,19 @@ namespace SSClient
             this.pnlMainMenu.Size = new System.Drawing.Size(250, 821);
             this.pnlMainMenu.TabIndex = 0;
             // 
-            // panel1
+            // pnlTimerTest
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtStdTime);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtTimeE);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 170);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(250, 174);
-            this.panel1.TabIndex = 24;
+            this.pnlTimerTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTimerTest.Controls.Add(this.txtStdTime);
+            this.pnlTimerTest.Controls.Add(this.label2);
+            this.pnlTimerTest.Controls.Add(this.txtTimeE);
+            this.pnlTimerTest.Controls.Add(this.label1);
+            this.pnlTimerTest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTimerTest.Location = new System.Drawing.Point(0, 170);
+            this.pnlTimerTest.Name = "pnlTimerTest";
+            this.pnlTimerTest.Padding = new System.Windows.Forms.Padding(3);
+            this.pnlTimerTest.Size = new System.Drawing.Size(250, 174);
+            this.pnlTimerTest.TabIndex = 24;
             // 
             // txtStdTime
             // 
@@ -211,7 +212,7 @@ namespace SSClient
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
             this.btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.btnLogout.BackgroundImage = global::SSClient.Properties.Resources.logout;
+            this.btnLogout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogout.BackgroundImage")));
             this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogout.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.btnLogout.BorderRadius = 28;
@@ -254,14 +255,14 @@ namespace SSClient
             // 
             // userPic
             // 
-            this.userPic.BackgroundImage = global::SSClient.Properties.Resources.user;
+            this.userPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("userPic.BackgroundImage")));
             this.userPic.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
             this.userPic.BorderColor = System.Drawing.Color.RoyalBlue;
             this.userPic.BorderColor2 = System.Drawing.Color.HotPink;
             this.userPic.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.userPic.BorderSize = 1;
             this.userPic.GradientAngle = 50F;
-            this.userPic.Image = global::SSClient.Properties.Resources.user;
+            this.userPic.Image = ((System.Drawing.Image)(resources.GetObject("userPic.Image")));
             this.userPic.Location = new System.Drawing.Point(8, 9);
             this.userPic.Margin = new System.Windows.Forms.Padding(2);
             this.userPic.Name = "userPic";
@@ -294,8 +295,8 @@ namespace SSClient
             this.Load += new System.EventHandler(this.formDashboard_Load);
             this.VisibleChanged += new System.EventHandler(this.formDashboard_VisibleChanged);
             this.pnlMainMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlTimerTest.ResumeLayout(false);
+            this.pnlTimerTest.PerformLayout();
             this.pnlUserPic.ResumeLayout(false);
             this.pnlUserPic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPic)).EndInit();
@@ -315,7 +316,7 @@ namespace SSClient
         private System.Windows.Forms.Label lblPriviledge;
         private ViControls.ViButton btnLogout;
         private System.Windows.Forms.Panel hiddenPannel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTimerTest;
         private System.Windows.Forms.TextBox txtStdTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTimeE;
