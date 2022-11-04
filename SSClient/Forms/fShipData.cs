@@ -131,14 +131,17 @@ namespace SSClient.Forms
 				if (comboBox1.SelectedIndex == 0)
 				{
 					pbShipImage.BackgroundImage = Properties.Resources.BC50000;
+					ExerciseController.VesselType = 0;
 				}
 				else if (comboBox1.SelectedIndex == 1)
 				{
 					pbShipImage.BackgroundImage = Properties.Resources.GC3650;
+					ExerciseController.VesselType = 1;
 				}
 				else if (comboBox1.SelectedIndex == 2)
 				{
 					pbShipImage.BackgroundImage = Properties.Resources.FC4180;
+					ExerciseController.VesselType = 2;
 				}
 			}
 		}

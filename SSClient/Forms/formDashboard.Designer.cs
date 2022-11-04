@@ -39,13 +39,13 @@ namespace SSClient
             this.hiddenPannel = new System.Windows.Forms.Panel();
             this.btnSettings = new FontAwesome.Sharp.IconButton();
             this.btnStability = new FontAwesome.Sharp.IconButton();
+            this.btnShip = new FontAwesome.Sharp.IconButton();
             this.pnlUserPic = new System.Windows.Forms.Panel();
             this.btnLogout = new ViControls.ViButton();
             this.lblPriviledge = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnShip = new FontAwesome.Sharp.IconButton();
             this.pnlMainMenu.SuspendLayout();
             this.pnlTimerTest.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
@@ -55,11 +55,11 @@ namespace SSClient
             // pnlMainMenu
             // 
             this.pnlMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.pnlMainMenu.Controls.Add(this.btnShip);
             this.pnlMainMenu.Controls.Add(this.pnlTimerTest);
             this.pnlMainMenu.Controls.Add(this.hiddenPannel);
             this.pnlMainMenu.Controls.Add(this.btnSettings);
             this.pnlMainMenu.Controls.Add(this.btnStability);
+            this.pnlMainMenu.Controls.Add(this.btnShip);
             this.pnlMainMenu.Controls.Add(this.pnlUserPic);
             this.pnlMainMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMainMenu.Location = new System.Drawing.Point(0, 0);
@@ -76,7 +76,7 @@ namespace SSClient
             this.pnlTimerTest.Controls.Add(this.txtTimeE);
             this.pnlTimerTest.Controls.Add(this.label1);
             this.pnlTimerTest.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTimerTest.Location = new System.Drawing.Point(0, 170);
+            this.pnlTimerTest.Location = new System.Drawing.Point(0, 215);
             this.pnlTimerTest.Name = "pnlTimerTest";
             this.pnlTimerTest.Padding = new System.Windows.Forms.Padding(3);
             this.pnlTimerTest.Size = new System.Drawing.Size(250, 174);
@@ -155,7 +155,7 @@ namespace SSClient
             this.btnSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSettings.IconSize = 24;
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(0, 125);
+            this.btnSettings.Location = new System.Drawing.Point(0, 170);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -176,12 +176,12 @@ namespace SSClient
             this.btnStability.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStability.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStability.ForeColor = System.Drawing.Color.White;
-            this.btnStability.IconChar = FontAwesome.Sharp.IconChar.Scroll;
+            this.btnStability.IconChar = FontAwesome.Sharp.IconChar.Adjust;
             this.btnStability.IconColor = System.Drawing.Color.White;
             this.btnStability.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStability.IconSize = 24;
             this.btnStability.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStability.Location = new System.Drawing.Point(0, 80);
+            this.btnStability.Location = new System.Drawing.Point(0, 125);
             this.btnStability.Margin = new System.Windows.Forms.Padding(2);
             this.btnStability.Name = "btnStability";
             this.btnStability.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -194,6 +194,32 @@ namespace SSClient
             this.btnStability.UseVisualStyleBackColor = true;
             this.btnStability.Visible = false;
             this.btnStability.Click += new System.EventHandler(this.btnStability_Click);
+            // 
+            // btnShip
+            // 
+            this.btnShip.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnShip.FlatAppearance.BorderSize = 0;
+            this.btnShip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShip.ForeColor = System.Drawing.Color.White;
+            this.btnShip.IconChar = FontAwesome.Sharp.IconChar.Ship;
+            this.btnShip.IconColor = System.Drawing.Color.White;
+            this.btnShip.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnShip.IconSize = 24;
+            this.btnShip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShip.Location = new System.Drawing.Point(0, 80);
+            this.btnShip.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShip.Name = "btnShip";
+            this.btnShip.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.btnShip.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnShip.Size = new System.Drawing.Size(250, 45);
+            this.btnShip.TabIndex = 25;
+            this.btnShip.Text = "Ship Data";
+            this.btnShip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnShip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShip.UseVisualStyleBackColor = true;
+            this.btnShip.Visible = false;
+            this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
             // 
             // pnlUserPic
             // 
@@ -281,31 +307,6 @@ namespace SSClient
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1334, 821);
             this.pnlContent.TabIndex = 1;
-            // 
-            // btnShip
-            // 
-            this.btnShip.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnShip.FlatAppearance.BorderSize = 0;
-            this.btnShip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShip.ForeColor = System.Drawing.Color.White;
-            this.btnShip.IconChar = FontAwesome.Sharp.IconChar.Ship;
-            this.btnShip.IconColor = System.Drawing.Color.White;
-            this.btnShip.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnShip.IconSize = 24;
-            this.btnShip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShip.Location = new System.Drawing.Point(0, 344);
-            this.btnShip.Margin = new System.Windows.Forms.Padding(2);
-            this.btnShip.Name = "btnShip";
-            this.btnShip.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.btnShip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnShip.Size = new System.Drawing.Size(250, 45);
-            this.btnShip.TabIndex = 25;
-            this.btnShip.Text = "Ship Data";
-            this.btnShip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnShip.UseVisualStyleBackColor = true;
-            this.btnShip.Visible = false;
             // 
             // formDashboard
             // 

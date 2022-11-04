@@ -161,6 +161,7 @@ namespace SSClient
             if(ExerciseController.EMode == ExerciseController.ExerciseMode.Test)
             {
                 btnStability.Visible = false;
+                btnShip.Visible = false;
                
                 // Load Scenario and Duplicate DB Scen
                 ScenLoad();
@@ -172,6 +173,7 @@ namespace SSClient
             }
             else
             {
+                btnShip.Visible = true;
                 btnStability.Visible = true;
                 pnlTimerTest.Visible = false;
             }
@@ -210,6 +212,8 @@ namespace SSClient
                 {
                     // get data from active scenario
                     DataTable dActScen = new DataTable();
+
+
                     if (ConnectorDB.MySQLConn.GetTableData(qActScen, ref dActScen))
                     {
                         int ScenPractNum = 0;
@@ -309,6 +313,14 @@ namespace SSClient
                 timeStdMinute.ToString().PadLeft(2, '0'),
                 "00");
             t.Start();
+        }
+
+        private void btnShip_Click(object sender, EventArgs e)
+        {
+            // Load Instructor Data
+            openChildForm(new fShipData());
+
+            hideSubmenu();
         }
 
         public void StopTest()
