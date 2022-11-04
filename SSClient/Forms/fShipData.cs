@@ -114,7 +114,7 @@ namespace SSClient.Forms
         {
 			InitShipData();
 
-			comboBox1.SelectedIndex = 0;
+			comboBox1.SelectedIndex = ExerciseController.VesselType;
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

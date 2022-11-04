@@ -160,9 +160,9 @@ namespace SSClient
 
             if(ExerciseController.EMode == ExerciseController.ExerciseMode.Test)
             {
-                btnStability.Visible = false;
+                
                 btnShip.Visible = false;
-               
+                btnStability.Visible = false;
                 // Load Scenario and Duplicate DB Scen
                 ScenLoad();
 

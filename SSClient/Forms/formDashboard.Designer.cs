@@ -187,7 +187,7 @@ namespace SSClient
             this.btnStability.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.btnStability.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnStability.Size = new System.Drawing.Size(250, 45);
-            this.btnStability.TabIndex = 19;
+            this.btnStability.TabIndex = 25;
             this.btnStability.Text = "Stability";
             this.btnStability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStability.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -213,7 +213,7 @@ namespace SSClient
             this.btnShip.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.btnShip.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnShip.Size = new System.Drawing.Size(250, 45);
-            this.btnShip.TabIndex = 25;
+            this.btnShip.TabIndex = 19;
             this.btnShip.Text = "Ship Data";
             this.btnShip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnShip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
