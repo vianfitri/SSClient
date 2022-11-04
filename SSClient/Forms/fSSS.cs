@@ -2881,7 +2881,7 @@ namespace SSClient.Forms
             DataTable dtInitPrac = new DataTable();
             if (ConnectorDB.MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
             {
-                uc_practicum = dtInitPrac.Rows[0]["uc"].ToString());
+                uc_practicum = dtInitPrac.Rows[0]["uc"].ToString();
                 nudBebanTMMB.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmb_weight"].ToString());
                 nudBebanTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_wight"].ToString());
                 nudBebanTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_weight"].ToString());
