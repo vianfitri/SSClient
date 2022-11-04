@@ -213,10 +213,12 @@ namespace SSClient
                     // get data from active scenario
                     DataTable dActScen = new DataTable();
 
-
                     if (ConnectorDB.MySQLConn.GetTableData(qActScen, ref dActScen))
                     {
                         int ScenPractNum = 0;
+
+                        ExerciseController.VesselType = (int)dActScen.Rows[0]["vessel_type"];
+
                         // get data scenario practicum for student. if null created
                         string qScenPra = "SELECT * FROM `shp_assets`.`ss_scenario_practicum` " +
                             "WHERE uc_scenario = '" + dActScen.Rows[0]["uc"] + "' " +
@@ -248,11 +250,13 @@ namespace SSClient
                                         "`uc`, " +
                                         "`uc_scenario`," +
                                         "`db_name`," +
+                                        "`vessel_type`," +
                                         "`uc_student`" +
                                         ") VALUES (" +
                                         "'" + UserController.currentUcUser + "'," +
                                         "'" + dActScen.Rows[0]["uc"] + "'," +
-                                        "'" + toDB + "'," + 
+                                        "'" + toDB + "'," +
+                                        dActScen.Rows[0]["vessel_type"] + "," +
                                         "'" + UserController.currentUcUser + "'" + 
                                         ")";
 
