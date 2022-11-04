@@ -20,7 +20,7 @@ namespace SSClient.Forms
         private DB mysqlConn = null;
 
         #region "Pract Variables To Save"
-        int id_practicum = 0;
+        string uc_practicum = "";
         float heel_val = 0;
         float trim_val = 0;
         float tmmb_weight = 0f;
@@ -241,6 +241,16 @@ namespace SSClient.Forms
         #region "Method"
         private void fSSS_Load(object sender, EventArgs e)
         {
+            // Visibility of Button End Assessment
+            if(ExerciseController.EMode == ExerciseController.ExerciseMode.Test)
+            {
+                btnEndAssessment.Visible = true;
+            }
+            else if(ExerciseController.EMode == ExerciseController.ExerciseMode.Training)
+            {
+                btnEndAssessment.Visible = false;
+            }
+
             if (ExerciseController.VesselType == 0)
             {
                 StabilityCalculator.LoadConfiguration(Application.StartupPath + "\\Data\\BC.cfg");
@@ -1012,7 +1022,10 @@ namespace SSClient.Forms
             cbxUseDispOrDraftReal.Checked = true;
 
             // If Exercise Mode is Test
-            InitPractData();
+            if (ExerciseController.EMode == ExerciseController.ExerciseMode.Test)
+            {
+                InitPractData();
+            }
         }
 
         private void crtLoadSideView_PrePaint(object sender, ChartPaintEventArgs e)
@@ -1677,7 +1690,17 @@ namespace SSClient.Forms
             mTKK = (double)nudBebanTKK.Value;
             mTNT = (double)nudBebanTNT.Value;
 
-            double ship_scale = StabilityCalculator.ship_scale;
+            double ship_scale = 87.0;
+
+            if (ExerciseController.VesselType == 0)
+            {
+                ship_scale = StabilityCalculator.ship_scale;
+            }
+            else if(ExerciseController.VesselType == 1 || ExerciseController.VesselType == 2)
+            {
+                ship_scale = StabilityCalculator.ship_gc_scale;
+            }
+
             double weight_scale = ship_scale * ship_scale * ship_scale / 1000;
             mTMMB_real = mTMMB * weight_scale; // in ton
             mTMMD_real = mTMMD * weight_scale; // in ton
@@ -1707,21 +1730,42 @@ namespace SSClient.Forms
             txbBobotTotal.Text = "Bobot Total Kapal = " + dWeightTotalShip.ToString("F1") + " kg = "
                 + dWeightTotalShip_Real.ToString("F1") + " ton";
 
-            TMMB_Pos.x = (double)nudPosisiTMMB.Value - 1096.5;
-            TMMB_Pos.y = 0;
-            TMMB_Pos.z = 106 + 0.5 * mTMMB * 10;
+            if (ExerciseController.VesselType == 0)
+            {
+                TMMB_Pos.x = (double)nudPosisiTMMB.Value - 1096.5;
+                TMMB_Pos.y = 0;
+                TMMB_Pos.z = 106 + 0.5 * mTMMB * 10;
 
-            TMMD_Pos.x = (double)nudPosisiTMMD.Value - 1096.5;
-            TMMD_Pos.y = 0;
-            TMMD_Pos.z = 106 + 0.5 * mTMMD * 10;
+                TMMD_Pos.x = (double)nudPosisiTMMD.Value - 1096.5;
+                TMMD_Pos.y = 0;
+                TMMD_Pos.z = 106 + 0.5 * mTMMD * 10;
 
-            TKK_Pos.x = 1100 - 1096.5;
-            TKK_Pos.y = (double)nudPosisiTKK.Value;
-            TKK_Pos.z = 275 + 0.5 * mTKK * 10;
+                TKK_Pos.x = 1100 - 1096.5;
+                TKK_Pos.y = (double)nudPosisiTKK.Value;
+                TKK_Pos.z = 275 + 0.5 * mTKK * 10;
 
-            TNT_Pos.x = 1225 - 1096.5;
-            TNT_Pos.y = 0;
-            TNT_Pos.z = (double)nudPosisiTNT.Value + 43 + 0.5 * mTNT * 15;
+                TNT_Pos.x = 1225 - 1096.5;
+                TNT_Pos.y = 0;
+                TNT_Pos.z = (double)nudPosisiTNT.Value + 43 + 0.5 * mTNT * 15;
+            }
+            else if (ExerciseController.VesselType == 1 || ExerciseController.VesselType == 2)
+            {
+                TMMB_Pos.x = (double)nudPosisiTMMB.Value - 958;
+                TMMB_Pos.y = 0;
+                TMMB_Pos.z = 106 + 0.5 * mTMMB * 10;
+
+                TMMD_Pos.x = (double)nudPosisiTMMD.Value - 958;
+                TMMD_Pos.y = 0;
+                TMMD_Pos.z = 106 + 0.5 * mTMMD * 10;
+
+                TKK_Pos.x = 1100 - 958;
+                TKK_Pos.y = (double)nudPosisiTKK.Value;
+                TKK_Pos.z = 275 + 0.5 * mTKK * 10;
+
+                TNT_Pos.x = 1225 - 958;
+                TNT_Pos.y = 0;
+                TNT_Pos.z = (double)nudPosisiTNT.Value + 43 + 0.5 * mTNT * 15;
+            }
 
             //TMMB_Pos_Real.x = TMMB_Pos.x * ship_scale / 1000; // in meter
             TMMB_Pos_Real.x = (double)nudPosisiTMMB.Value * ship_scale / 1000; // in meter
@@ -2832,12 +2876,12 @@ namespace SSClient.Forms
         private void InitPractData()
         {
             // initialize test data
-            string qInitPrac = "SELECT * FROM `" + ParamsGlobal.test_db_name + "`.`ss_practicum`";
+            string qInitPrac = "SELECT * FROM `" + ExerciseController.CurrentDBName + "`.`ss_practicum`";
 
             DataTable dtInitPrac = new DataTable();
             if (ConnectorDB.MySQLConn.GetTableData(qInitPrac, ref dtInitPrac))
             {
-                id_practicum = int.Parse(dtInitPrac.Rows[0]["id"].ToString());
+                uc_practicum = dtInitPrac.Rows[0]["uc"].ToString());
                 nudBebanTMMB.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmb_weight"].ToString());
                 nudBebanTMMD.Value = decimal.Parse(dtInitPrac.Rows[0]["tmmd_wight"].ToString());
                 nudBebanTKK.Value = decimal.Parse(dtInitPrac.Rows[0]["tkk_weight"].ToString());
@@ -2895,24 +2939,70 @@ namespace SSClient.Forms
             string tm5last = tmstr.Substring(tmstr.Length - 5, 5);
             string id_execute = rnd.Next(100, 999).ToString() + "_" + tm5last + "_" + rnd.Next(10, 99).ToString();
 
+            string ucExecute = Utility.GenerateUC();
             // Save Value of Practic
-            string qValExec = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_execute` (" +
-                "`id_practicum`, `id_student`, `tmmb_weight`, `tmmb_position`,`tmmd_wight`, `tmmd_position`," +
-                "`tkk_weight`,`tkk_position`,`tnt_weight`,`tnt_position`) VALUES ("+ id_practicum + ", " +
-                "0, "+ tmmb_weight + ", " + tmmb_pos + ", " + tmmd_weight + ", " + tmmd_pos + ", " +
-                tkk_weight + ", " + tkk_pos + ", " + tnt_weight + ", " + tnt_pos + ");";
+            string qValExec = "INSERT INTO `" + ExerciseController.CurrentDBName + "`.`ss_execute` " + 
+                "(" +
+                "`uc`, " +
+                "`uc_practicum`, " + 
+                "`uc_student`, " +
+                "`tmmb_weight`, " +
+                "`tmmb_position`, " +
+                "`tmmd_wight`, " +
+                "`tmmd_position`," +
+                "`tkk_weight`, " +
+                "`tkk_position`, " +
+                "`tnt_weight`, " +
+                "`tnt_position`" +
+                ") VALUES (" + 
+                "'" + ucExecute + "'" +
+                "'" + uc_practicum + "', " +
+                "'" + UserController.currentUcUser + "', " + 
+                tmmb_weight + ", " + 
+                tmmb_pos + ", " + 
+                tmmd_weight + ", " + 
+                tmmd_pos + ", " +
+                tkk_weight + ", " + 
+                tkk_pos + ", " + 
+                tnt_weight + ", " + 
+                tnt_pos + 
+                ");";
 
-            string qValScore = "INSERT INTO `" + ParamsGlobal.test_db_name + "`.`ss_scoring`(" +
-                "`id_execute`,`id_student`,"+
-                "`angle_heel`,`angle_heel_score`,`angle_trim`,`angle_trim_score`,"+
-                "`draft_aft`,`draft_aft_score`,`draft_fwd`,`draft_fwd_score`," +
-                "`time_elapsed`,`time_elapsed_score`," +
-                "`is_accomplished`,`accomplished_score`) VALUES (" +
-                "1, 0," + 
-                heel_val + "," + angle_heel_score + "," + trim_val + "," + angle_trim_score + "," +
-                aft_draft + "," + aft_draft_score + "," + fwd_draft + "," + fwd_draft_score + "," +
-                time_elapsed + "," + time_speed_score + "," +
-                accomplished + "," + accomplished_score + ");";
+            string ucScoring = Utility.GenerateUC();
+            string qValScore = "INSERT INTO `" + ExerciseController.CurrentDBName + "`.`ss_scoring` "+
+                "(" +
+                "`uc`," +
+                "`uc_execute`, " + 
+                "`uc_student`,"+
+                "`angle_heel`, " +
+                "`angle_heel_score`," + 
+                "`angle_trim`," +
+                "`angle_trim_score`,"+
+                "`draft_aft`," +
+                "`draft_aft_score`," +
+                "`draft_fwd`," +
+                "`draft_fwd_score`," +
+                "`time_elapsed`," +
+                "`time_elapsed_score`," +
+                "`is_accomplished`," +
+                "`accomplished_score`" +
+                ") VALUES (" +
+                "'"+ ucScoring +"', " +
+                "'"+ ucExecute +"', " +
+                "'"+ UserController.currentUcUser +"', " + 
+                heel_val + "," + 
+                angle_heel_score + "," + 
+                trim_val + "," + 
+                angle_trim_score + "," +
+                aft_draft + "," + 
+                aft_draft_score + "," + 
+                fwd_draft + "," + 
+                fwd_draft_score + "," +
+                time_elapsed + "," + 
+                time_speed_score + "," +
+                accomplished + "," + 
+                accomplished_score + 
+                ");";
 
             string qValPrac = qValExec + qValScore;
 
@@ -2965,16 +3055,6 @@ namespace SSClient.Forms
         private void btnReloadCFG_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this._parent.StartTest();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this._parent.StopTest();
         }
     }
 }

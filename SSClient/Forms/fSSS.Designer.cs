@@ -75,7 +75,7 @@ namespace SSClient.Forms
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControlInput = new System.Windows.Forms.TabControl();
             this.tabMovingLoad = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn3D = new System.Windows.Forms.Button();
             this.btnEndAssessment = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txbGy = new System.Windows.Forms.TextBox();
@@ -272,7 +272,6 @@ namespace SSClient.Forms
             this.cbbHSLineSelect = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.spcShipStability)).BeginInit();
             this.spcShipStability.Panel1.SuspendLayout();
             this.spcShipStability.Panel2.SuspendLayout();
@@ -810,7 +809,7 @@ namespace SSClient.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
             this.splitContainer1.Size = new System.Drawing.Size(420, 782);
-            this.splitContainer1.SplitterDistance = 610;
+            this.splitContainer1.SplitterDistance = 672;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -823,14 +822,13 @@ namespace SSClient.Forms
             this.tabControlInput.Location = new System.Drawing.Point(0, 0);
             this.tabControlInput.Name = "tabControlInput";
             this.tabControlInput.SelectedIndex = 0;
-            this.tabControlInput.Size = new System.Drawing.Size(420, 610);
+            this.tabControlInput.Size = new System.Drawing.Size(420, 672);
             this.tabControlInput.TabIndex = 0;
             // 
             // tabMovingLoad
             // 
             this.tabMovingLoad.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tabMovingLoad.Controls.Add(this.button2);
-            this.tabMovingLoad.Controls.Add(this.button1);
+            this.tabMovingLoad.Controls.Add(this.btn3D);
             this.tabMovingLoad.Controls.Add(this.btnEndAssessment);
             this.tabMovingLoad.Controls.Add(this.label9);
             this.tabMovingLoad.Controls.Add(this.txbGy);
@@ -888,23 +886,24 @@ namespace SSClient.Forms
             this.tabMovingLoad.Location = new System.Drawing.Point(4, 22);
             this.tabMovingLoad.Name = "tabMovingLoad";
             this.tabMovingLoad.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMovingLoad.Size = new System.Drawing.Size(412, 584);
+            this.tabMovingLoad.Size = new System.Drawing.Size(412, 646);
             this.tabMovingLoad.TabIndex = 0;
             this.tabMovingLoad.Text = "Shear Load";
             // 
-            // button1
+            // btn3D
             // 
-            this.button1.Location = new System.Drawing.Point(54, 479);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 178;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3D.Location = new System.Drawing.Point(227, 528);
+            this.btn3D.Name = "btn3D";
+            this.btn3D.Size = new System.Drawing.Size(125, 27);
+            this.btn3D.TabIndex = 180;
+            this.btn3D.Text = "3D VIEW";
+            this.btn3D.UseVisualStyleBackColor = true;
             // 
             // btnEndAssessment
             // 
-            this.btnEndAssessment.Location = new System.Drawing.Point(171, 479);
+            this.btnEndAssessment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEndAssessment.Location = new System.Drawing.Point(68, 526);
             this.btnEndAssessment.Name = "btnEndAssessment";
             this.btnEndAssessment.Size = new System.Drawing.Size(109, 29);
             this.btnEndAssessment.TabIndex = 177;
@@ -1446,7 +1445,7 @@ namespace SSClient.Forms
             this.txbInfoMuatan.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txbInfoMuatan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbInfoMuatan.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbInfoMuatan.Location = new System.Drawing.Point(3, 521);
+            this.txbInfoMuatan.Location = new System.Drawing.Point(3, 583);
             this.txbInfoMuatan.Name = "txbInfoMuatan";
             this.txbInfoMuatan.ReadOnly = true;
             this.txbInfoMuatan.Size = new System.Drawing.Size(406, 30);
@@ -1458,7 +1457,7 @@ namespace SSClient.Forms
             this.txbBobotTotal.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txbBobotTotal.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbBobotTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbBobotTotal.Location = new System.Drawing.Point(3, 551);
+            this.txbBobotTotal.Location = new System.Drawing.Point(3, 613);
             this.txbBobotTotal.Name = "txbBobotTotal";
             this.txbBobotTotal.ReadOnly = true;
             this.txbBobotTotal.Size = new System.Drawing.Size(406, 30);
@@ -1522,7 +1521,7 @@ namespace SSClient.Forms
             this.tabStabilityInput.Location = new System.Drawing.Point(4, 22);
             this.tabStabilityInput.Name = "tabStabilityInput";
             this.tabStabilityInput.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStabilityInput.Size = new System.Drawing.Size(412, 584);
+            this.tabStabilityInput.Size = new System.Drawing.Size(412, 646);
             this.tabStabilityInput.TabIndex = 1;
             this.tabStabilityInput.Text = "Hydrostatic Calculation";
             // 
@@ -1938,7 +1937,7 @@ namespace SSClient.Forms
             this.tabHSData.Controls.Add(this.tabHydroModel);
             this.tabHSData.Controls.Add(this.tabHydroReal);
             this.tabHSData.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabHSData.Location = new System.Drawing.Point(3, 333);
+            this.tabHSData.Location = new System.Drawing.Point(3, 395);
             this.tabHSData.Name = "tabHSData";
             this.tabHSData.SelectedIndex = 0;
             this.tabHSData.Size = new System.Drawing.Size(406, 210);
@@ -2529,7 +2528,7 @@ namespace SSClient.Forms
             this.txbGZInfo.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txbGZInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbGZInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbGZInfo.Location = new System.Drawing.Point(3, 543);
+            this.txbGZInfo.Location = new System.Drawing.Point(3, 605);
             this.txbGZInfo.Name = "txbGZInfo";
             this.txbGZInfo.ReadOnly = true;
             this.txbGZInfo.Size = new System.Drawing.Size(406, 38);
@@ -2557,7 +2556,7 @@ namespace SSClient.Forms
             this.tabInfo.Location = new System.Drawing.Point(4, 22);
             this.tabInfo.Name = "tabInfo";
             this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInfo.Size = new System.Drawing.Size(412, 584);
+            this.tabInfo.Size = new System.Drawing.Size(412, 646);
             this.tabInfo.TabIndex = 2;
             this.tabInfo.Text = "Info";
             // 
@@ -2693,8 +2692,9 @@ namespace SSClient.Forms
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(420, 167);
+            this.tabControl2.Size = new System.Drawing.Size(420, 105);
             this.tabControl2.TabIndex = 0;
+            this.tabControl2.Visible = false;
             // 
             // tabGraphTransversal
             // 
@@ -2715,7 +2715,7 @@ namespace SSClient.Forms
             this.tabGraphTransversal.Location = new System.Drawing.Point(4, 22);
             this.tabGraphTransversal.Name = "tabGraphTransversal";
             this.tabGraphTransversal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGraphTransversal.Size = new System.Drawing.Size(412, 141);
+            this.tabGraphTransversal.Size = new System.Drawing.Size(412, 79);
             this.tabGraphTransversal.TabIndex = 0;
             this.tabGraphTransversal.Text = "Transversal Diagram Graph Setting";
             this.tabGraphTransversal.UseVisualStyleBackColor = true;
@@ -2901,7 +2901,7 @@ namespace SSClient.Forms
             this.tabGraphHSCurve.Location = new System.Drawing.Point(4, 22);
             this.tabGraphHSCurve.Name = "tabGraphHSCurve";
             this.tabGraphHSCurve.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGraphHSCurve.Size = new System.Drawing.Size(412, 141);
+            this.tabGraphHSCurve.Size = new System.Drawing.Size(412, 79);
             this.tabGraphHSCurve.TabIndex = 1;
             this.tabGraphHSCurve.Text = "Hydrostatic Curve Graph Setting";
             this.tabGraphHSCurve.UseVisualStyleBackColor = true;
@@ -3035,16 +3035,6 @@ namespace SSClient.Forms
             this.label31.Size = new System.Drawing.Size(27, 13);
             this.label31.TabIndex = 68;
             this.label31.Text = "Line";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(306, 485);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 179;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // fSSS
             // 
@@ -3355,7 +3345,6 @@ namespace SSClient.Forms
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button btnEndAssessment;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn3D;
     }
 }
