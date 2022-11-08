@@ -1086,11 +1086,9 @@ namespace SSClient.Class
                         string qDropTable =
                             string.Format("DROP TABLE IF EXISTS {0}.{1};", toDB, tbl_name);
                         string qCreateTable =
-                            string.Format("CREATE TABLE {0}.{1} LIKE {2}.{3};",
-                            toDB, tbl_name, fromDB, tbl_name);
+                            string.Format("CREATE TABLE {0}.{1} LIKE {2}.{3};", toDB, tbl_name, fromDB, tbl_name);
                         string qInsertTable =
-                            string.Format("INSERT INTO {0}.{1} SELECT * FROM {2}.{3};",
-                            toDB, tbl_name, fromDB, tbl_name);
+                            string.Format("INSERT INTO {0}.{1} SELECT * FROM {2}.{3};", toDB, tbl_name, fromDB, tbl_name);
                         string qAll = qDropTable + qCreateTable + qInsertTable;
 
                         stat = SetCommand(qAll);
