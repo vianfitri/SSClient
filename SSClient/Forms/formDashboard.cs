@@ -163,6 +163,7 @@ namespace SSClient
                 
                 btnShip.Visible = false;
                 btnStability.Visible = false;
+
                 // Load Scenario and Duplicate DB Scen
                 ScenLoad();
 
