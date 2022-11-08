@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cargo-ship.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\library\Bunifu_UI_v1.5.3.dll</HintPath>
@@ -348,6 +351,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GC3650.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cargo-ship.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -899,6 +899,7 @@ namespace SSClient.Forms
             this.btn3D.TabIndex = 180;
             this.btn3D.Text = "3D VIEW";
             this.btn3D.UseVisualStyleBackColor = true;
+            this.btn3D.Click += new System.EventHandler(this.btn3D_Click);
             // 
             // btnEndAssessment
             // 
