@@ -100,10 +100,10 @@ namespace SSClient
             string qrStr = "SELECT a.uc, " +
                 "b.first_name, b.last_name, b.birthday, b.sex, b.email, b.photos, " +
                 "c.typename " +
-                "FROM shp_assets.ss_user a " +
-                "INNER JOIN shp_assets.ss_subject b " +
+                "FROM `shp_assets`.`ss_user` a " +
+                "INNER JOIN `shp_assets`.`ss_subject` b " +
                 "ON a.uc_subject = b.uc " +
-                "INNER JOIN shp_assets.ss_usertype c " +
+                "INNER JOIN `shp_assets`.`ss_usertype` c " +
                 "ON b.type = c.id " +
                 "WHERE a.uc = '" + logId + "' LIMIT 0, 1";
 
