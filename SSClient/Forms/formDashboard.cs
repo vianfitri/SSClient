@@ -707,6 +707,7 @@ namespace SSClient
             exit = true;
             if (connected)
             {
+                Connected(false);
                 obj.client.Close();
             }
         }
