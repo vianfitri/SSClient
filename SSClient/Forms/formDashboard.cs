@@ -370,6 +370,11 @@ namespace SSClient
             }
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #region "Assistant Help"
         public void Connected(bool status)
         {
