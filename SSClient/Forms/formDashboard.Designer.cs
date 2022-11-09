@@ -31,6 +31,7 @@ namespace SSClient
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formDashboard));
             this.pnlMainMenu = new System.Windows.Forms.Panel();
+            this.btnHelp = new FontAwesome.Sharp.IconButton();
             this.pnlTimerTest = new System.Windows.Forms.Panel();
             this.txtStdTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@ namespace SSClient
             this.lblUsername = new System.Windows.Forms.Label();
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnHelp = new FontAwesome.Sharp.IconButton();
             this.pnlMainMenu.SuspendLayout();
             this.pnlTimerTest.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
@@ -69,6 +69,31 @@ namespace SSClient
             this.pnlMainMenu.Name = "pnlMainMenu";
             this.pnlMainMenu.Size = new System.Drawing.Size(250, 821);
             this.pnlMainMenu.TabIndex = 0;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.White;
+            this.btnHelp.IconChar = FontAwesome.Sharp.IconChar.HandPaper;
+            this.btnHelp.IconColor = System.Drawing.Color.White;
+            this.btnHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHelp.IconSize = 24;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(0, 758);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.btnHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnHelp.Size = new System.Drawing.Size(250, 45);
+            this.btnHelp.TabIndex = 26;
+            this.btnHelp.Text = "Get Help";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Visible = false;
             // 
             // pnlTimerTest
             // 
@@ -309,31 +334,6 @@ namespace SSClient
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1334, 821);
             this.pnlContent.TabIndex = 1;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnHelp.FlatAppearance.BorderSize = 0;
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.White;
-            this.btnHelp.IconChar = FontAwesome.Sharp.IconChar.SadCry;
-            this.btnHelp.IconColor = System.Drawing.Color.White;
-            this.btnHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHelp.IconSize = 24;
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(0, 758);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.btnHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnHelp.Size = new System.Drawing.Size(250, 45);
-            this.btnHelp.TabIndex = 26;
-            this.btnHelp.Text = "Settings";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Visible = false;
             // 
             // formDashboard
             // 
