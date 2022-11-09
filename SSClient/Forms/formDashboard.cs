@@ -29,6 +29,14 @@ namespace SSClient
         private float timeStandard = 0; // in minute
 
         #region "Help Assistant"
+        private ReadWriteFile appConf;
+        private string[] dataString = new string[2];
+        private readonly string[] identifiedString = { "[HelpServer]", "Host=", "Port=" };
+        public string Host, Port;
+
+        private readonly string configDir =
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\ShipStab";
+
         private bool connected = false;
         private Thread client = null;
         private struct MyClient
@@ -174,6 +182,11 @@ namespace SSClient
 
         private void formDashboard_Load(object sender, EventArgs e)
         {
+            // Load Help Assistant Server connection configuration
+            LoadHelpConfig();
+
+            // Create Help Assistant Server Connection
+            CreateConnection(Host, Port);
 
             // Load default content
             openChildForm(new formWelcome());
@@ -382,6 +395,26 @@ namespace SSClient
         }
 
         #region "Assistant Help"
+        private void LoadHelpConfig()
+        {
+            appConf = new ReadWriteFile();
+            if (appConf.LoadConfig(configDir, "help.ini", identifiedString, ref dataString))
+            {
+                Host = dataString[0];
+                Port = dataString[1];
+            }
+            else
+            {
+                IPAddress[] ipA = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
+                Host = ipA[ipA.Length -1].ToString();
+                Port = "8789";
+                dataString[0] = Host;
+                dataString[1] = Port;
+
+                appConf.SaveConfig(configDir, "help.ini", identifiedString, ref dataString);
+            }
+        }
+
         public void Connected(bool status)
         {
             if (!exit)
