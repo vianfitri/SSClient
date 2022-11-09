@@ -723,8 +723,7 @@ namespace SSClient
                         btnHelp.Enabled = true;
                         btnHelp.IconColor = Color.Lime;
                         btnHelp.ForeColor = Color.Lime;
-                    }
-                    );  
+                    });  
                 }
                 else if (msg.Contains("dis$"))
                 {
