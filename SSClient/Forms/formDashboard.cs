@@ -264,6 +264,7 @@ namespace SSClient
                         int ScenPractNum = 0;
 
                         ExerciseController.VesselType = (int)dActScen.Rows[0]["vessel_type"];
+                        ExerciseController.CurrentUCScen = dActScen.Rows[0]["uc"].ToString();
 
                         // get data scenario practicum for student. if null created
                         string qScenPra = "SELECT * FROM `shp_assets`.`ss_scenario_practicum` " +

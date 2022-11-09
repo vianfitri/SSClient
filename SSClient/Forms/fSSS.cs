@@ -2931,8 +2931,12 @@ namespace SSClient.Forms
             aft_draft = VisualServer.visualconn.DraftAft;
             fwd_draft = VisualServer.visualconn.DraftFwd;
 
+            time_elapsed = this._parent.TimeElapsed;
+
             // Calculate Score
             CalculateScore(accomplished);
+
+            float final_score = (angle_heel_score + angle_trim_score + aft_draft_score + fwd_draft_score + time_speed_score + accomplished_score) / 6;
 
             // create id ss_execute
             Random rnd = new Random();
@@ -3005,7 +3009,44 @@ namespace SSClient.Forms
                 accomplished_score + 
                 ");";
 
-            string qValPrac = qValExec + qValScore;
+            string qValRepScore = "INSERT INTO `shp_assets`.`ss_scoring` " +
+                "(" +
+                "`uc`," +
+                "`uc_scenario`, " +
+                "`uc_student`," +
+                "`angle_heel`, " +
+                "`angle_heel_score`," +
+                "`angle_trim`," +
+                "`angle_trim_score`," +
+                "`draft_aft`," +
+                "`draft_aft_score`," +
+                "`draft_fwd`," +
+                "`draft_fwd_score`," +
+                "`time_elapsed`," +
+                "`time_elapsed_score`," +
+                "`is_accomplished`," +
+                "`accomplished_score`," +
+                "`final_score`" +
+                ") VALUES (" +
+                "'" + ucScoring + "', " +
+                "'" + ExerciseController.CurrentUCScen + "', " +
+                "'" + UserController.currentUcUser + "', " +
+                heel_val + "," +
+                angle_heel_score + "," +
+                trim_val + "," +
+                angle_trim_score + "," +
+                aft_draft + "," +
+                aft_draft_score + "," +
+                fwd_draft + "," +
+                fwd_draft_score + "," +
+                time_elapsed + "," +
+                time_speed_score + "," +
+                accomplished + "," +
+                accomplished_score + "," +
+                final_score +
+                ");";
+
+            string qValPrac = qValExec + qValScore + qValRepScore;
 
             if(ConnectorDB.MySQLConn.SetCommand(qValPrac))
             {
@@ -3039,6 +3080,23 @@ namespace SSClient.Forms
                 fwd_draft_score = (float)(100 - (fwd_draft - draft_fwd_max) / 0.5 * 10);
 
             // calculate time speed
+            if(time_elapsed <= time_duration_max)
+            {
+                time_speed_score = 70;
+
+                if((time_duration_max - time_elapsed) >= 1 && (time_duration_max - time_elapsed) < 2)
+                {
+                    time_speed_score = 80;
+                }
+                else if((time_duration_max - time_elapsed) >= 2 && (time_duration_max - time_elapsed) < 3)
+                {
+                    time_speed_score = 90;
+                }
+                else if((time_duration_max - time_elapsed) >= 3)
+                {
+                    time_speed_score = 100;
+                }
+            }
 
             // accomplished score
             accomplished_score = 100 * accomplished;            
