@@ -727,9 +727,12 @@ namespace SSClient
                 }
                 else if (msg.Contains("dis$"))
                 {
-                    btnHelp.Enabled = false;
-                    btnHelp.IconColor = Color.White;
-                    btnHelp.ForeColor = Color.White;
+                    btnHelp.Invoke((MethodInvoker)delegate 
+                    {
+                        btnHelp.Enabled = false;
+                        btnHelp.IconColor = Color.White;
+                        btnHelp.ForeColor = Color.White;
+                    });      
                 }
             }
             else
