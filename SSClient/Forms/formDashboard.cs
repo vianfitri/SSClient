@@ -676,6 +676,12 @@ namespace SSClient
                 btnHelp.IconColor = Color.Green;
                 btnHelp.ForeColor = Color.Green;
             }
+            else if (msg.Contains("dis$"))
+            {
+                btnHelp.Enabled = false;
+                btnHelp.IconColor = Color.White;
+                btnHelp.ForeColor = Color.White;
+            }
         }
         #endregion
 
