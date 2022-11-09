@@ -372,7 +372,7 @@ namespace SSClient
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-
+            Send("rh$");
         }
 
         #region "Assistant Help"
