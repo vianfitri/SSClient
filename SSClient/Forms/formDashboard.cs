@@ -714,17 +714,20 @@ namespace SSClient
 
         private void ProcessMessage(string msg)
         {
-            if (msg.Contains("en$"))
+            if (ExerciseController.EMode == ExerciseController.ExerciseMode.Training)
             {
-                btnHelp.Enabled = true;
-                btnHelp.IconColor = Color.Green;
-                btnHelp.ForeColor = Color.Green;
-            }
-            else if (msg.Contains("dis$"))
-            {
-                btnHelp.Enabled = false;
-                btnHelp.IconColor = Color.White;
-                btnHelp.ForeColor = Color.White;
+                if (msg.Contains("en$"))
+                {
+                    btnHelp.Enabled = true;
+                    btnHelp.IconColor = Color.Green;
+                    btnHelp.ForeColor = Color.Green;
+                }
+                else if (msg.Contains("dis$"))
+                {
+                    btnHelp.Enabled = false;
+                    btnHelp.IconColor = Color.White;
+                    btnHelp.ForeColor = Color.White;
+                }
             }
         }
         #endregion
