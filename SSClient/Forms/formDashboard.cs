@@ -186,6 +186,11 @@ namespace SSClient
                 btnShip.Visible = false;
                 btnStability.Visible = false;
 
+                // Disable Help Assistant Button
+                btnHelp.Enabled = false;
+                btnHelp.IconColor = Color.White;
+                btnHelp.ForeColor = Color.White;
+
                 // Load Scenario and Duplicate DB Scen
                 ScenLoad();
 
