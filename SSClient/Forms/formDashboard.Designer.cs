@@ -46,6 +46,7 @@ namespace SSClient
             this.lblUsername = new System.Windows.Forms.Label();
             this.userPic = new ViControls.CircularPicture();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnHelp = new FontAwesome.Sharp.IconButton();
             this.pnlMainMenu.SuspendLayout();
             this.pnlTimerTest.SuspendLayout();
             this.pnlUserPic.SuspendLayout();
@@ -55,6 +56,7 @@ namespace SSClient
             // pnlMainMenu
             // 
             this.pnlMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.pnlMainMenu.Controls.Add(this.btnHelp);
             this.pnlMainMenu.Controls.Add(this.pnlTimerTest);
             this.pnlMainMenu.Controls.Add(this.hiddenPannel);
             this.pnlMainMenu.Controls.Add(this.btnSettings);
@@ -308,6 +310,31 @@ namespace SSClient
             this.pnlContent.Size = new System.Drawing.Size(1334, 821);
             this.pnlContent.TabIndex = 1;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.White;
+            this.btnHelp.IconChar = FontAwesome.Sharp.IconChar.SadCry;
+            this.btnHelp.IconColor = System.Drawing.Color.White;
+            this.btnHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHelp.IconSize = 24;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(0, 758);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.btnHelp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnHelp.Size = new System.Drawing.Size(250, 45);
+            this.btnHelp.TabIndex = 26;
+            this.btnHelp.Text = "Settings";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Visible = false;
+            // 
             // formDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +377,7 @@ namespace SSClient
         private System.Windows.Forms.TextBox txtTimeE;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnShip;
+        private FontAwesome.Sharp.IconButton btnHelp;
     }
 }
 
