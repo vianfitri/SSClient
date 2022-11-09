@@ -719,8 +719,8 @@ namespace SSClient
                 if (msg.Contains("en$"))
                 {
                     btnHelp.Enabled = true;
-                    btnHelp.IconColor = Color.Green;
-                    btnHelp.ForeColor = Color.Green;
+                    btnHelp.IconColor = Color.Lime;
+                    btnHelp.ForeColor = Color.Lime;
                 }
                 else if (msg.Contains("dis$"))
                 {
@@ -728,6 +728,12 @@ namespace SSClient
                     btnHelp.IconColor = Color.White;
                     btnHelp.ForeColor = Color.White;
                 }
+            }
+            else
+            {
+                btnHelp.Enabled = false;
+                btnHelp.IconColor = Color.White;
+                btnHelp.ForeColor = Color.White;
             }
         }
         #endregion
