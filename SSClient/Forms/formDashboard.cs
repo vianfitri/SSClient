@@ -158,6 +158,10 @@ namespace SSClient
             {
                 UserController.isLogin = false;
                 UserController.currentUcUser = "";
+
+                // Close Connection from Assistant Server when logout
+                ClientClosing();
+
                 this._parent.openChildForm(this._parent.fLogin);
                 openChildForm(new formWelcome());
             }
