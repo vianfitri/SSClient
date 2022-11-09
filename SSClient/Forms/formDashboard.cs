@@ -174,6 +174,7 @@ namespace SSClient
 
         private void formDashboard_Load(object sender, EventArgs e)
         {
+
             // Load default content
             openChildForm(new formWelcome());
 
