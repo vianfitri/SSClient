@@ -5,9 +5,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using SSClient.Forms;
 using SSClient.Class;
@@ -24,6 +27,25 @@ namespace SSClient
         int h, m, s;
         private float timeElapsed = 0; // in minute
         private float timeStandard = 0; // in minute
+
+        #region "Help Assistant"
+        private bool connected = false;
+        private Thread client = null;
+        private struct MyClient
+        {
+            public string key;
+            public string ipaddress;
+            public TcpClient client;
+            public NetworkStream stream;
+            public byte[] buffer;
+            public StringBuilder data;
+            public EventWaitHandle handle;
+        };
+        private MyClient obj;
+        private Task send = null;
+        private bool exit = false;
+        #endregion
+
         #endregion
 
         #region "Constructor"
@@ -347,6 +369,305 @@ namespace SSClient
                 loadLoginInfo(UserController.currentUcUser);
             }
         }
+
+        #region "Assistant Help"
+        public void Connected(bool status)
+        {
+            if (!exit)
+            {
+                connected = status;
+                if (status)
+                {
+                    //StatusChange?.Invoke(connected);
+                    Console.WriteLine("You are now connected");
+                }
+                else
+                {
+                    //StatusChange?.Invoke(connected);
+                    Console.WriteLine("You are now disconnected");
+                }
+            }
+        }
+
+        private void Read(IAsyncResult result)
+        {
+            int bytes = 0;
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    bytes = obj.stream.EndRead(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
+                    }
+                    else
+                    {
+                        // check command shutdown here
+                        if (obj.data.ToString() == "gPower")
+                        {
+                            Console.WriteLine("Shutdown call");
+                            Process.Start("shutdown", "/s /t 30");
+                        }
+
+                        obj.data.Clear();
+                        obj.handle.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Console.WriteLine(ex.Message);
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+
+        private void ReadAuth(IAsyncResult result)
+        {
+            int bytes = 0;
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    bytes = obj.stream.EndRead(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null);
+                    }
+                    else
+                    {
+                        JavaScriptSerializer json = new JavaScriptSerializer(); // feel free to use JSON serializer
+                        Dictionary<string, string> data = json.Deserialize<Dictionary<string, string>>(obj.data.ToString());
+                        if (data.ContainsKey("status") && data["status"].Equals("ack"))
+                        {
+                            Connected(true);
+                        }
+                        obj.data.Clear();
+                        obj.handle.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Console.WriteLine(ex.Message);
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+
+        private bool Authorize()
+        {
+            bool success = false;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("ipaddress", obj.ipaddress);
+            data.Add("key", "ShipStability");
+            JavaScriptSerializer json = new JavaScriptSerializer(); // feel free to use JSON serializer
+            Send(json.Serialize(data));
+
+            while (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null);
+                    obj.handle.WaitOne();
+                    if (connected)
+                    {
+                        success = true;
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            if (!connected)
+            {
+                Console.WriteLine("Unauthorized");
+            }
+            return success;
+        }
+
+        private void Connection(IPAddress ip, int port)
+        {
+            try
+            {
+                obj = new MyClient();
+                obj.key = "ShipStability";
+                obj.client = new TcpClient();
+                obj.client.Connect(ip, port);
+                obj.ipaddress = ((IPEndPoint)obj.client.Client.LocalEndPoint).Address.ToString();
+                obj.stream = obj.client.GetStream();
+                obj.buffer = new byte[obj.client.ReceiveBufferSize];
+                obj.data = new StringBuilder();
+                obj.handle = new EventWaitHandle(false, EventResetMode.AutoReset);
+                if (Authorize())
+                {
+                    while (obj.client.Connected)
+                    {
+                        try
+                        {
+                            obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
+                            obj.handle.WaitOne();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                    obj.client.Close();
+                    Connected(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void CreateConnection(string host, string ports)
+        {
+            if (connected)
+            {
+                obj.client.Close();
+            }
+            else if (client == null || !client.IsAlive)
+            {
+                string address = host;
+                string number = ports;
+                bool error = false;
+                IPAddress ip = null;
+                if (address.Length < 1)
+                {
+                    error = true;
+                    Console.WriteLine("Address is required");
+                }
+                else
+                {
+                    try
+                    {
+                        ip = Dns.Resolve(address).AddressList[0];
+                    }
+                    catch
+                    {
+                        error = true;
+                        Console.WriteLine("Address is not valid");
+                    }
+                }
+                int port = -1;
+                if (number.Length < 1)
+                {
+                    error = true;
+                    Console.WriteLine("Port number is required");
+                }
+                else if (!int.TryParse(number, out port))
+                {
+                    error = true;
+                    Console.WriteLine("Port number is not valid");
+                }
+                else if (port < 0 || port > 65535)
+                {
+                    error = true;
+                    Console.WriteLine("Port number is out of range");
+                }
+                if (!error)
+                {
+                    // encryption key is optional
+                    client = new Thread(() => Connection(ip, port))
+                    {
+                        IsBackground = true
+                    };
+                    client.Start();
+                }
+            }
+        }
+
+        private void Write(IAsyncResult result)
+        {
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.EndWrite(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void BeginWrite(string msg)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(msg);
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginWrite(buffer, 0, buffer.Length, new AsyncCallback(Write), null);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void Send(string msg)
+        {
+            if (send == null || send.IsCompleted)
+            {
+                send = Task.Factory.StartNew(() => BeginWrite(msg));
+            }
+            else
+            {
+                send.ContinueWith(antecendent => BeginWrite(msg));
+            }
+        }
+
+        public void ClientClosing()
+        {
+            exit = true;
+            if (connected)
+            {
+                obj.client.Close();
+            }
+        }
+        #endregion
+
         #endregion
     }
 }
