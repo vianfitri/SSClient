@@ -419,12 +419,8 @@ namespace SSClient
                     }
                     else
                     {
-                        // check command shutdown here
-                        if (obj.data.ToString() == "gPower")
-                        {
-                            Console.WriteLine("Shutdown call");
-                            Process.Start("shutdown", "/s /t 30");
-                        }
+                        // check assistant help enabled
+                        ProcessMessage(obj.data.ToString());
 
                         obj.data.Clear();
                         obj.handle.Set();
@@ -669,6 +665,16 @@ namespace SSClient
             if (connected)
             {
                 obj.client.Close();
+            }
+        }
+
+        private void ProcessMessage(string msg)
+        {
+            if (msg.Contains("en$"))
+            {
+                btnHelp.Enabled = true;
+                btnHelp.IconColor = Color.Green;
+                btnHelp.ForeColor = Color.Green;
             }
         }
         #endregion
