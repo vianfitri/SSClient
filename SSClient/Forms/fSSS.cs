@@ -1424,7 +1424,18 @@ namespace SSClient.Forms
         {
             if (cbxUseHeelReal.Checked)
             {
-                scbHeelVal.Value = (int)(heel_angle * 100);
+                if ((heel_angle * 100) > 9000)
+                {
+                    scbHeelVal.Value = 9000;
+                }
+                else if ((heel_angle * 100) < -9000)
+                {
+                    scbHeelVal.Value = -9000;
+                }
+                else
+                {
+                    scbHeelVal.Value = (int)(heel_angle * 100);
+                }
                 dHeelVal = heel_angle;
             }
             else
@@ -1467,7 +1478,18 @@ namespace SSClient.Forms
             {
                 dHeelVal = (double)nudHeelVal.Value;
             }
-            scbHeelVal.Value = (int)(dHeelVal * 100);
+
+            if((dHeelVal * 100) > 9000)
+            {
+                scbHeelVal.Value = 9000;
+            } else if((dHeelVal * 100) < -9000)
+            {
+                scbHeelVal.Value = -9000;
+            } else
+            {
+                scbHeelVal.Value = (int)(dHeelVal * 100);
+            }
+            
             CalculateTransverseHydrostatic();
             DrawGZandKNCurves(); // 20150908
 
@@ -1478,7 +1500,19 @@ namespace SSClient.Forms
         {
             if (cbxUseTrimReal.Checked)
             {
-                scbTrimVal.Value = (int)(trim_angle * 100);
+                if ((trim_angle * 100) > 1000)
+                {
+                    scbTrimVal.Value = 1000;
+                }
+                else if ((trim_angle * 100) < -1000)
+                {
+                    scbTrimVal.Value = -1000;
+                }
+                else
+                {
+                    scbTrimVal.Value = (int)(trim_angle * 100);
+                }
+                //scbTrimVal.Value = (int)(trim_angle * 100);
                 dTrimVal = trim_angle;
             }
             else
@@ -1500,7 +1534,20 @@ namespace SSClient.Forms
             {
                 dTrimVal = (double)nudTrimVal.Value;
             }
-            scbTrimVal.Value = (int)(dTrimVal * 100);
+
+            if ((dTrimVal * 100) > 1000)
+            {
+                scbTrimVal.Value = 1000;
+            }
+            else if ((dTrimVal * 100) < -1000)
+            {
+                scbTrimVal.Value = -1000;
+            }
+            else
+            {
+                scbTrimVal.Value = (int)(dTrimVal * 100);
+            }
+            //scbTrimVal.Value = (int)(dTrimVal * 100);
             CalculateLongitudinalHydrostatic();
 
             SendShipDataTo3D();
@@ -1808,13 +1855,36 @@ namespace SSClient.Forms
 
             if (cbxUseHeelReal.Checked)
             {
-                scbHeelVal.Value = (int)(heel_angle * 100);
+                if((heel_angle * 100) > 9000)
+                {
+                    scbHeelVal.Value = 9000;
+                } 
+                else if((heel_angle * 100) < -9000)
+                {
+                    scbHeelVal.Value = -9000;
+                } else
+                {
+                    scbHeelVal.Value = (int)(heel_angle * 100);
+                }
+                
                 nudHeelVal.Value = (decimal)(heel_angle);
             }
 
             if (cbxUseTrimReal.Checked)
             {
-                scbTrimVal.Value = (int)(trim_angle * 100);
+                if ((trim_angle * 100) > 1000)
+                {
+                    scbTrimVal.Value = 1000;
+                }
+                else if ((trim_angle * 100) < -1000)
+                {
+                    scbTrimVal.Value = -1000;
+                }
+                else
+                {
+                    scbTrimVal.Value = (int)(trim_angle * 100);
+                }
+                //scbTrimVal.Value = (int)(trim_angle * 100);
                 nudTrimVal.Value = (decimal)(trim_angle);
             }
 
@@ -2960,7 +3030,7 @@ namespace SSClient.Forms
                 "`tnt_weight`, " +
                 "`tnt_position`" +
                 ") VALUES (" + 
-                "'" + ucExecute + "'" +
+                "'" + ucExecute + "', " +
                 "'" + uc_practicum + "', " +
                 "'" + UserController.currentUcUser + "', " + 
                 tmmb_weight + ", " + 
@@ -2990,7 +3060,8 @@ namespace SSClient.Forms
                 "`time_elapsed`," +
                 "`time_elapsed_score`," +
                 "`is_accomplished`," +
-                "`accomplished_score`" +
+                "`accomplished_score`," +
+                "`final_score`" +
                 ") VALUES (" +
                 "'"+ ucScoring +"', " +
                 "'"+ ucExecute +"', " +
@@ -3006,7 +3077,8 @@ namespace SSClient.Forms
                 time_elapsed + "," + 
                 time_speed_score + "," +
                 accomplished + "," + 
-                accomplished_score + 
+                accomplished_score + "," +
+                final_score +
                 ");";
 
             string qValRepScore = "INSERT INTO `shp_assets`.`ss_scoring` " +
@@ -3057,6 +3129,7 @@ namespace SSClient.Forms
         private void btnEndAssessment_Click(object sender, EventArgs e)
         {
             SavePractValue(1);
+            this._parent.StopTest();
         }
 
         private void CalculateScore(int accomplished = 0)
@@ -3125,6 +3198,7 @@ namespace SSClient.Forms
                 Process start = new Process();
                 string path = Application.StartupPath + "\\3D\\";
                 start.StartInfo.FileName = path + "bulkcarrier.exe";
+                start.StartInfo.Arguments = "--single-instance";
                 start.Start();
 
             }
@@ -3134,6 +3208,7 @@ namespace SSClient.Forms
                 Process start = new Process();
                 string path = Application.StartupPath + "\\3D\\";
                 start.StartInfo.FileName = path + "generalcargo.exe";
+                start.StartInfo.Arguments = "--single-instance";
                 start.Start();
             }
             else if (ExerciseController.VesselType == 2)
@@ -3142,6 +3217,7 @@ namespace SSClient.Forms
                 Process start = new Process();
                 string path = Application.StartupPath + "\\3D\\";
                 start.StartInfo.FileName = path + "container.exe";
+                start.StartInfo.Arguments = "--single-instance";
                 start.Start();
             }
         }
