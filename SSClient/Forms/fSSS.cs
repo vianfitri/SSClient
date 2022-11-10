@@ -1800,19 +1800,19 @@ namespace SSClient.Forms
             {
                 TMMB_Pos.x = (double)nudPosisiTMMB.Value - 958;
                 TMMB_Pos.y = 0;
-                TMMB_Pos.z = 106 + 0.5 * mTMMB * 10;
+                TMMB_Pos.z = 106 + 0.5 * 10;
 
                 TMMD_Pos.x = (double)nudPosisiTMMD.Value - 958;
                 TMMD_Pos.y = 0;
-                TMMD_Pos.z = 106 + 0.5 * mTMMD * 10;
+                TMMD_Pos.z = 106 + 0.5 * 10;
 
                 TKK_Pos.x = 1100 - 958;
                 TKK_Pos.y = (double)nudPosisiTKK.Value;
-                TKK_Pos.z = 275 + 0.5 * mTKK * 10;
+                TKK_Pos.z = 275 + 0.5 * 10;
 
                 TNT_Pos.x = 1225 - 958;
                 TNT_Pos.y = 0;
-                TNT_Pos.z = (double)nudPosisiTNT.Value + 43 + 0.5 * mTNT * 15;
+                TNT_Pos.z = (double)nudPosisiTNT.Value + 43 + 0.5 * 15;
             }
 
             //TMMB_Pos_Real.x = TMMB_Pos.x * ship_scale / 1000; // in meter
