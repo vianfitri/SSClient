@@ -1524,7 +1524,9 @@ namespace SSClient.Forms
             {
                 dTrimVal = (double)scbTrimVal.Value / 100;
             }
-            nudTrimVal.Value = (decimal)dTrimVal;
+            if (dTrimVal > 10) { nudTrimVal.Value = 10; }
+            else if (dTrimVal < -10) { nudTrimVal.Value = -10; }
+            else { nudTrimVal.Value = (decimal)dTrimVal; }
             CalculateLongitudinalHydrostatic();
         }
 
