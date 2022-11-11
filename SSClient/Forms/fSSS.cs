@@ -1442,7 +1442,10 @@ namespace SSClient.Forms
             {
                 dHeelVal = (double)scbHeelVal.Value / 100;
             }
-            nudHeelVal.Value = (decimal)dHeelVal;
+            if (dHeelVal > 90) { nudHeelVal.Value = 90; }
+            else if (dHeelVal < -90) { nudHeelVal.Value = -90; }
+            else { nudHeelVal.Value = (decimal)dHeelVal; }
+
             CalculateTransverseHydrostatic();
             DrawGZandKNCurves(); // 20150908
         }
@@ -1471,7 +1474,9 @@ namespace SSClient.Forms
         {
             if (cbxUseHeelReal.Checked)
             {
-                nudHeelVal.Value = (decimal)(heel_angle);
+                if (heel_angle > 90) { nudHeelVal.Value = 90; }
+                else if (heel_angle < -90) { nudHeelVal.Value = -90; }
+                else { nudHeelVal.Value = (decimal)(heel_angle); }
                 dHeelVal = heel_angle;
             }
             else
@@ -1866,8 +1871,10 @@ namespace SSClient.Forms
                 {
                     scbHeelVal.Value = (int)(heel_angle * 100);
                 }
-                
-                nudHeelVal.Value = (decimal)(heel_angle);
+
+                if (heel_angle > 90) { nudHeelVal.Value = 90; }
+                else if (heel_angle < -90) { nudHeelVal.Value = -90; }
+                else { nudHeelVal.Value = (decimal)(heel_angle); }
             }
 
             if (cbxUseTrimReal.Checked)
