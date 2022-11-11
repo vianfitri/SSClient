@@ -1534,7 +1534,9 @@ namespace SSClient.Forms
         {
             if (cbxUseTrimReal.Checked)
             {
-                nudTrimVal.Value = (decimal)(trim_angle);
+                if (trim_angle > 10) { nudTrimVal.Value = 10; }
+                else if (trim_angle < -10) { nudTrimVal.Value = -10; }
+                else { nudTrimVal.Value = (decimal)(trim_angle); }
                 dTrimVal = trim_angle;
             }
             else
@@ -1894,7 +1896,9 @@ namespace SSClient.Forms
                     scbTrimVal.Value = (int)(trim_angle * 100);
                 }
                 //scbTrimVal.Value = (int)(trim_angle * 100);
-                nudTrimVal.Value = (decimal)(trim_angle);
+                if (trim_angle > 10) { nudTrimVal.Value = 10; }
+                else if (trim_angle < -10) { nudTrimVal.Value = -10; }
+                else { nudTrimVal.Value = (decimal)(trim_angle); }
             }
 
             if (cbxUseKGReal.Checked)
