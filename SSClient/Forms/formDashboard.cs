@@ -291,6 +291,7 @@ namespace SSClient
 
                                 if(ConnectorDB.MySQLConn.DuplicateDB(fromDB, toDB))
                                 {
+                                    string ucScenPract = Utility.GenerateUC();
                                     // insert data to Scenario Practicum table
                                     string qInScenPra = "INSERT INTO `shp_assets`.`ss_scenario_practicum` " +
                                         "(" +
@@ -300,7 +301,7 @@ namespace SSClient
                                         "`vessel_type`," +
                                         "`uc_student`" +
                                         ") VALUES (" +
-                                        "'" + UserController.currentUcUser + "'," +
+                                        "'" + ucScenPract + "'," +
                                         "'" + dActScen.Rows[0]["uc"] + "'," +
                                         "'" + toDB + "'," +
                                         dActScen.Rows[0]["vessel_type"] + "," +

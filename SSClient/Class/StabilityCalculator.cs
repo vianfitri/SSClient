@@ -552,7 +552,7 @@ public static class StabilityCalculator {
         }
         else if(ship_type == 1 || ship_type == 2)
         {
-            ReadCSV_HS_Data(Application.StartupPath + "\\Data\\HS_GC.csv", 81);
+            ReadCSV_HS_Data(Application.StartupPath + "\\Data\\HS_GC.csv", 41);
 
             ReadCSV_2D_Data(Application.StartupPath + "\\Data\\KN_GC.csv", 28, 16, ref kntData_2D_BC);
 
