@@ -3152,9 +3152,13 @@ namespace SSClient.Forms
             else
                 angle_heel_score = (float)(100 - (Math.Abs(heel_val) - angle_max) / 0.5 * 10);
 
+            if(angle_heel_score < 0) { angle_heel_score = 0; }
+
             if (Math.Abs(trim_val) <= angle_max) angle_trim_score = 100;
             else
                 angle_trim_score = (float)(100 - (Math.Abs(trim_val) - angle_max) / 0.5 * 10);
+
+            if(angle_trim_score < 0) { angle_trim_score = 0; }
 
             // calculate draft score
             if (aft_draft <= draft_aft_max) aft_draft_score = 100;
